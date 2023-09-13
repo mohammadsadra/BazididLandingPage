@@ -1,0 +1,13 @@
+
+
+@font-face {
+	font-family: Darknet;
+	font-style: normal;
+	src: url('../fonts/darknet/Darknet-Regular.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: Darknet;
+	font-style: italic;
+	src: url('../fonts/darknet/Darknet-Italic.ttf') format('ttf');
+}
