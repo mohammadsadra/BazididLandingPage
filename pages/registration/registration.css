@@ -1,12 +1,65 @@
 @import url(../../assets/css/fontiran.css);
 @import url(../../assets/css/darknet.css);
 
+html{
+    width: 100%;
+    height: 100%;
+}
 body {
-  direction: rtl;
-  color: #272829;
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+}
+.main{
+    height: 100%;
+    width: 100%;
+    margin: 0!important;
+    padding: 0!important;
+}
+.main-row{
+    height: 100%;
+    width: 100%;
+    margin: 0!important;
+    background-color: #ABC1F2;
 }
 
-.chip {
+/*  Explanation Column  */
+.explanation-col{
+
+}
+.explanation-text{
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+.register-col{
+    border-radius: 0 50px 50px 0;
+    background-color: white;
+    height: 100%;
+}
+.btn{
+    background-color: #5B86E5!important;
+    border: transparent!important;
+}
+.form-box{
+    margin-bottom: 25px;
+}
+.form-text{
+    font-size: 20px!important;
+    color: black!important;
+    margin-bottom: 10px!important;
+}
+.custom-file-upload{
+    padding: 2px 5px 2px 5px;
+    background-color: #5B86E5!important;
+    color: white!important;
+}
+
+
+/*  Chips Styles  */
+.chips {
     display: inline-block;
     padding: 0 20px;
     height: 45px;
@@ -14,25 +67,38 @@ body {
     line-height: 45px;
     border-radius: 25px;
     background-color: #f1f1f1;
+    margin-inline-end: 5px;
   }
-  
-  .chip img {
-    float: left;
-    margin: 0 10px 0 -25px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+
+  .chips img {
+      float: left;
+      margin: 0 10px 0 -25px;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
   }
-  
+
+    .selected-chips{
+        background-color: #5B86E5;
+        color: white;
+    }
+
   .closebtn {
-    padding-left: 10px;
-    color: #888;
-    font-weight: bold;
-    float: right;
-    font-size: 20px;
-    cursor: pointer;
+      padding-left: 10px;
+      color: #888;
+      font-weight: bold;
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
   }
-  
+
   .closebtn:hover {
     color: #000;
+  }
+
+  /*  Buttons  */
+  .disabled-button{
+      opacity: 0.5;
+      background: #6c757d !important;
+      cursor: default;
   }
