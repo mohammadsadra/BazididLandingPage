@@ -20,7 +20,7 @@ body {
     height: 100%;
     width: 100%;
     margin: 0!important;
-    background-color: #ABC1F2;
+    background-color: #2F455C;
 }
 
 /*  Explanation Column  */
@@ -36,11 +36,11 @@ body {
 
 .register-col{
     border-radius: 0 50px 50px 0;
-    background-color: white;
+    background-color: #F7F8FF;
     height: 100%;
 }
 .btn{
-    background-color: #5B86E5!important;
+    background-color: #21D0B2!important;
     border: transparent!important;
 }
 .form-box{
@@ -53,7 +53,7 @@ body {
 }
 .custom-file-upload{
     padding: 2px 5px 2px 5px;
-    background-color: #5B86E5!important;
+    background-color: #21D0B2!important;
     color: white!important;
 }
 
@@ -80,7 +80,7 @@ body {
   }
 
     .selected-chips{
-        background-color: #5B86E5;
+        background-color: #1DCDFE;
         color: white;
     }
 
