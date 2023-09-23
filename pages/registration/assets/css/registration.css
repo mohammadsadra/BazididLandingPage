@@ -1,15 +1,25 @@
-@import url(../../assets/css/fontiran.css);
-@import url(../../assets/css/darknet.css);
+@import url(fontiran.css);
 
 html{
     width: 100%;
     height: 100%;
 }
 body {
+    font-family: IRANSansX, Darknet !important;
     width: 100%;
     height: 100%;
     direction: rtl;
 }
+
+h1 {
+    font-weight: 700!important;
+}
+
+error-tag {
+    color: red;
+    font-size: 15px;
+}
+
 .main{
     height: 100%;
     width: 100%;
@@ -24,9 +34,6 @@ body {
 }
 
 /*  Explanation Column  */
-.explanation-col{
-
-}
 .explanation-text{
     font-weight: bold;
     font-size: 20px;
@@ -103,7 +110,4 @@ body {
       background: #6c757d !important;
       cursor: default;
   }
-error-tag{
-    color: red;
-    font-size: 15px;
-}
+
