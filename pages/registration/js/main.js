@@ -35,7 +35,6 @@ $(document).ready(function(){
 
 });
 function nextSection() {
-    console.log(currentSection);
     currentSection += 1;
     for (let i = 1; i <= 5; i++) {
         if (currentSection === i) {
@@ -47,7 +46,6 @@ function nextSection() {
     checkVisibility();
 }
 function backSection(){
-    console.log(currentSection);
     currentSection -= 1;
     for (let i = 1; i <= 5; i++) {
         if (currentSection === i) {
@@ -93,10 +91,8 @@ function selectChips(id){
             }
             if(chipsArray[i]){
                 $("#chips" + id).addClass("selected-chips")
-                console.log(i.toString() + "     Selected")
             } else {
                 $("#chips" + id).removeClass("selected-chips")
-                console.log(i.toString() + "     Deselected")
             }
         }
     }

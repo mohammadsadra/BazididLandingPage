@@ -103,3 +103,7 @@ body {
       background: #6c757d !important;
       cursor: default;
   }
+error-tag{
+    color: red;
+    font-size: 15px;
+}
