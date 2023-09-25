@@ -6,6 +6,7 @@ const chipsArray = Array(false, false, false, false);
 
 
 $(document).ready(function () {
+    hideLoading();
 
     // BUTTONS ASSIGN
     for (let i = 1; i <= 5; i++) {
@@ -22,6 +23,8 @@ $(document).ready(function () {
     $(".back-btn").on("click", () =>
         backSection()
     );
+
+
     $("#chips1").on("click", () =>
         selectChips(1)
     );
@@ -71,7 +74,7 @@ $(document).ready(function () {
 
 
     // VALIDATE ON SUBMIT
-    $("#api").on("click", function (){
+    $("#submit").on("click", function (){
         const res0 = $("input[name=rulesCheckbox]").val();
         if (res0 === ""){
             alert("قوانین را مطالعه فرمایید.");
@@ -90,9 +93,8 @@ $(document).ready(function () {
         const res6 = validateName("projectDescription", "فیلد را پر نمایید.");
 
         if(res1 && res2 && res3 && res4 && res5 && res6){
-            // createManager()
+            registerForm()
         } else {
-            createManager()
             alert("مقادیر را بدرستی وارد نمایید.");
         }
     });
@@ -146,7 +148,9 @@ function createManager() {
 
 }
 
+
 function registerForm() {
+    showLoading()
     let managerName = $("input[name=managerName]").val();
     let managerPosition = $("input[name=managerPosition]").val();
     let phoneNumber = $("input[name=managerPhoneNumber]").val();
@@ -160,47 +164,57 @@ function registerForm() {
     let projectTitle = $("input[name=projectName]").val();
     let projectExplanation = $("textarea[name=projectDescription]").val();
 
-    let selectedDays = $("input[name=managerPhoneNumber]").val();
     let uploadedForm = $("input[name=managerPhoneNumber]").val();
-}
 
-$('form').submit( function (event) {
-    // prevent the usual form submission behaviour; the "action" attribute of the form
-    event.preventDefault();
-    // validation goes below...
-
-    // now for the big event
     $.ajax({
-        // the server script you want to send your data to
-        'url': 'destination.php',
-        // all of your POST/GET variables
-        'data': {
-            // 'dataname': $('input').val(), ...
-        },
-        // you may change this to GET, if you like...
-        'type': 'post',
-        // the kind of response that you want from the server
-        'dataType': 'html',
-        'beforeSend': function () {
-            // anything you want to have happen before sending the data to the server...
-            // useful for "loading" animations
+        url: mainURL + "registrationForm/createFullForm",
+        type: 'post',
+        data: JSON.stringify({
+                managerCreationDto: {
+                    name: managerName,
+                    phone: phoneNumber,
+                    isVerify: true,
+                    position: managerPosition
+                },
+                schoolCreationDto: {
+                    name: schoolName,
+                    schoolType: schoolType,
+                    gender: studentsGender
+                },
+                schoolClassCreationDto: {
+                    grade: schoolGrade,
+                    isProgrammer: isProgrammer,
+                    programmingLanguage: isProgrammer ? programmingLanguage : -1,
+                },
+                eventDaysCreationDto: {
+                    saturday: false,
+                    sunday: chipsArray[0],
+                    monday: chipsArray[1],
+                    tuesday: chipsArray[2],
+                    wednesday: chipsArray[3],
+                    thursday: false,
+                    friday: false
+                },
+                hasProject: hasProject,
+                projectCreationDto: hasProject ? {
+                    projectName: projectTitle,
+                    description: projectExplanation
+                } : {}
+        }),
+        headers: header,
+        dataType: dataType,
+        success: function (data) {
+            console.info(data);
         }
-    })
-        .done( function (response) {
-            // what you want to happen when an ajax call to the server is successfully completed
-            // 'response' is what you get back from the script/server
-            // usually you want to format your response and spit it out to the page
-        })
-        .fail( function (code, status) {
-            // what you want to happen if the ajax request fails (404 error, timeout, etc.)
-            // 'code' is the numeric code, and 'status' is the text explanation for the error
-            // I usually just output some fancy error messages
-        })
-        .always( function (xhr, status) {
-            // what you want to have happen no matter if the response is success or error
-            // here, you would "stop" your loading animations, and maybe output a footer at the end of your content, reading "done"
-        });
-});
+    }).done(function (response) {
+        console.log(response);
+    }).fail(function (res){
+        console.log(res)
+    }).always(
+            () => hideLoading()
+    );
+
+}
 
 /////////////////////////////////////////////////////////////////////
 
@@ -280,9 +294,11 @@ function checkVisibility(){
     }
     if(currentSection !== 5){
         $(".next-btn").show();
+        $("#submit").hide();
     }
     if(currentSection === 5){
         $(".next-btn").hide();
+        $("#submit").show();
     }
 }
 
@@ -321,3 +337,18 @@ function checkSelectedChips(){
 
 /////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////// LOADING FUNCTIONS ////////////////////////////
+
+function hideLoading(){
+    $("#loading").hide()
+    $("#loading-background").hide()
+
+}
+
+function showLoading(){
+    $("#loading").show()
+    $("#loading-background").show()
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
