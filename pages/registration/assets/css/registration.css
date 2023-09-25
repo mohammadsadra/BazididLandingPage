@@ -10,6 +10,12 @@ body {
     height: 100%;
     direction: rtl;
 }
+@media only screen
+and (max-width : 515px) {
+    body{
+        background-color: #F7F8FF!important;
+    }
+}
 
 h1 {
     font-weight: 700!important;
@@ -46,24 +52,46 @@ error-tag {
     background-color: #F7F8FF;
     height: 100%;
 }
+
+
+@media only screen
+and (max-width : 515px) {
+    .explanation-col{
+        padding: 20px;
+        width: 100%!important;
+    }
+    .register-col{
+        border-radius: 0 0 0 0;
+        background-color: #F7F8FF;
+        height: 100%;
+    }
+
+    .button-bar{
+        padding-bottom: 35px !important;
+    }
+}
+
+
 .btn{
     background-color: #21D0B2!important;
     border: transparent!important;
 }
+
 .form-box{
     margin-bottom: 25px;
 }
+
 .form-text{
     font-size: 20px!important;
     color: black!important;
     margin-bottom: 10px!important;
 }
+
 .custom-file-upload{
     padding: 2px 5px 2px 5px;
     background-color: #21D0B2!important;
     color: white!important;
 }
-
 
 /*  Chips Styles  */
 .chips {

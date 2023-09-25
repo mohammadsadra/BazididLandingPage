@@ -35,6 +35,13 @@ $(document).ready(function () {
         selectChips(4)
     );
 
+    $('input[name=rulesCheckbox]').click(function() {
+        if ( $("input[name=rulesCheckbox]").attr('value')) {
+            $('input[name=rulesCheckbox]').attr('value', '');
+        } else {
+            $('input[name=rulesCheckbox]').attr('value', 'checked');
+        }
+    });
     checkVisibility();
 
     // VALIDATION ON FILING INPUTS
@@ -65,21 +72,27 @@ $(document).ready(function () {
 
     // VALIDATE ON SUBMIT
     $("#api").on("click", function (){
-        var res1 = validateName("managerName", "فیلد را پر نمایید.");
+        const res0 = $("input[name=rulesCheckbox]").val();
+        if (res0 === ""){
+            alert("قوانین را مطالعه فرمایید.");
+            return;
+        }
+        const res1 = validateName("managerName", "فیلد را پر نمایید.");
 
-        var res2 = validateName("managerPosition", "فیلد را پر نمایید.");
+        const res2 = validateName("managerPosition", "فیلد را پر نمایید.");
 
-        var res3 = validatePhoneNumber("managerPhoneNumber");
+        const res3 = validatePhoneNumber("managerPhoneNumber");
 
-        var res4 = validateName("schoolName", "فیلد را پر نمایید.");
+        const res4 = validateName("schoolName", "فیلد را پر نمایید.");
 
-        var res5 = validateName("projectName", "فیلد را پر نمایید.");
+        const res5 = validateName("projectName", "فیلد را پر نمایید.");
 
-        var res6 = validateName("projectDescription", "فیلد را پر نمایید.");
+        const res6 = validateName("projectDescription", "فیلد را پر نمایید.");
 
         if(res1 && res2 && res3 && res4 && res5 && res6){
-            createManager()
+            // createManager()
         } else {
+            createManager()
             alert("مقادیر را بدرستی وارد نمایید.");
         }
     });
