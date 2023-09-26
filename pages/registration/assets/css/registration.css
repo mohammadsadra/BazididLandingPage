@@ -39,7 +39,7 @@ error-tag {
     background-color: #2F455C;
 }
 
-/*  Explanation Column  */
+/*  Columns  */
 .explanation-text{
     font-weight: bold;
     font-size: 20px;
@@ -76,7 +76,9 @@ and (max-width : 515px) {
     background-color: #21D0B2!important;
     border: transparent!important;
 }
+/*//////////////////////////////////////////////////////*/
 
+/*   Form Styles   */
 .form-box{
     margin-bottom: 25px;
 }
@@ -92,6 +94,12 @@ and (max-width : 515px) {
     background-color: #21D0B2!important;
     color: white!important;
 }
+.custom-file-download{
+    padding: 2px 5px 2px 5px;
+    background-color: #1DCDFE!important;
+    color: white!important;
+}
+/*//////////////////////////////////////////////////////*/
 
 /*  Chips Styles  */
 .chips {
@@ -131,13 +139,15 @@ and (max-width : 515px) {
   .closebtn:hover {
     color: #000;
   }
+/*//////////////////////////////////////////////////////*/
 
-  /*  Buttons  */
+/*  Buttons  */
   .disabled-button{
       opacity: 0.5;
       background: #6c757d !important;
       cursor: default;
   }
+/*//////////////////////////////////////////////////////*/
 
 /*      LOADING     */
 .loading-position {
@@ -166,3 +176,12 @@ and (max-width : 515px) {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/*//////////////////////////////////////////////////////*/
+
+/*     Select Option Styles     */
+
+.disabled-option{}
+
+/*//////////////////////////////////////////////////////*/
+

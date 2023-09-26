@@ -2,6 +2,7 @@
 // BUTTON VARIABLES
 let currentSection = 1;
 let selectedChips = 0;
+const statesNumber = 6;
 const chipsArray = Array(false, false, false, false);
 
 
@@ -9,7 +10,7 @@ $(document).ready(function () {
     hideLoading();
 
     // BUTTONS ASSIGN
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= statesNumber; i++) {
         if (currentSection === i) {
             $(".section-" + i.toString()).show();
         } else {
@@ -264,7 +265,7 @@ function validatePhoneNumber(id) {
 //////////////////////////// BUTTONS FUNCTIONS ////////////////////////////
 function nextSection() {
     currentSection += 1;
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= statesNumber; i++) {
         if (currentSection === i) {
             $(".section-" + i.toString()).show();
         } else {
@@ -275,7 +276,7 @@ function nextSection() {
 }
 function backSection(){
     currentSection -= 1;
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= statesNumber; i++) {
         if (currentSection === i) {
             $(".section-" + i.toString()).show();
         } else {
@@ -292,11 +293,11 @@ function checkVisibility(){
     if(currentSection !== 1){
         $(".back-btn").show();
     }
-    if(currentSection !== 5){
+    if(currentSection !== statesNumber){
         $(".next-btn").show();
         $("#submit").hide();
     }
-    if(currentSection === 5){
+    if(currentSection === statesNumber){
         $(".next-btn").hide();
         $("#submit").show();
     }
