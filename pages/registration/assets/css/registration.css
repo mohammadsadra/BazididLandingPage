@@ -185,3 +185,9 @@ and (max-width : 515px) {
 
 /*//////////////////////////////////////////////////////*/
 
+/*     Level Styles     */
+.level-style{
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
