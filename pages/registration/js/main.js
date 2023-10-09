@@ -94,6 +94,8 @@ $(document).ready(function () {
         const res6 = validateName("projectDescription", "فیلد را پر نمایید.");
 
         if(res1 && res2 && res3 && res4 && res5 && res6){
+            uploadFile(1)
+            uploadFile(2)
             registerForm()
         } else {
             alert("مقادیر را بدرستی وارد نمایید.");
@@ -109,6 +111,10 @@ const header = {
     "Access-Control-Allow-Credentials": "true",
     "Content-Type": "application/json"
 };
+
+var studentFileId = 0;
+var managerFormFileId = 0;
+
 const dataType ='json';
 
 function getNames() {
@@ -149,7 +155,44 @@ function createManager() {
 
 }
 
+function uploadFile(fileKind){
 
+    let formData = new FormData();
+    var file;
+
+    if(fileKind === 1){
+        formData.append("FilePathType", "3");
+        file = $("#excel-file-upload").prop('files')[0];
+    } else if (fileKind === 2){
+        formData.append("FilePathType", "1");
+        file = $("#manager-file-upload").prop('files')[0];
+    }
+
+    formData.append("FileKind", fileKind);
+    formData.append("FileDetails", file);
+
+    $.ajax({
+        url: mainURL + "files/PostSingleFile",
+        type: 'post',
+        data: formData,
+        contentType: false, // Not to set any content header
+        processData: false,
+        success: function (data) {
+            console.info(data);
+        }
+    }).done(function (response) {
+        if(fileKind === 1){
+            studentFileId = response;
+        } else if (fileKind === 2){
+            managerFormFileId = response;
+        }
+        console.log(response);
+    }).fail(function (res){
+        console.log(res)
+    }).always(function (){
+        console.log("UPLOADING FILE ALWAYS!");
+    });
+}
 function registerForm() {
     showLoading()
     let managerName = $("input[name=managerName]").val();
@@ -196,6 +239,8 @@ function registerForm() {
                     thursday: false,
                     friday: false
                 },
+                managerFormId: managerFormFileId,
+                studentListFileId: studentFileId,
                 hasProject: hasProject,
                 projectCreationDto: hasProject ? {
                     projectName: projectTitle,

@@ -178,10 +178,10 @@
                                                 گام ۲:
                                             </div>
 
-                                            <label for="file-upload" class="custom-file-upload btn">
+                                            <label for="excel-file-upload" class="custom-file-upload btn">
                                                 آپلود فایل اکسل
                                             </label>
-                                            <input style="visibility: hidden" id="file-upload" type="file"/>
+                                            <input style="visibility: hidden" id="excel-file-upload" type="file" accept=".xlsx"/>
                                         </div>
                                     </div>
                                 </div>
@@ -192,28 +192,48 @@
                                     <img width="70px" src="assets/images/info.png">
                                     <h1 style="margin-right: 20px">اطلاعات تکمیلی</h1>
                                 </div>
+
+
                                 <div class="form-group mb-5">
                                     <label class="form-text" for="projectNameText">روز پیشنهادی خودتان را از بین پزینه‌های زیر انتخاب بفرمایید:</label>
                                     <h6 class="mb-4">(لازم به ذکر است که روز انتخابی شما به معنای برگزاری رویداد در آن روز نبوده و پس از هماهنگی های لازم تاریخ دقیق رویداد به اطلاع شما خواهد رسید.)</h6>
 
-                                    <div id="chips1" class="chips mt-1">
-                                        یک‌شنبه
-                                        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
-                                    </div>
-                                    <div id="chips2" class="chips mt-1">
-                                        دوشنبه
-                                        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
-                                    </div>
-                                    <div id="chips3" class="chips mt-1">
-                                        سه‌شنبه
-                                        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
-                                    </div>
-                                    <div id="chips4" class="chips mt-1">
-                                        چهارشنبه
-                                        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
-                                    </div>
+<!--                                    <div class="mb-4">-->
+<!--                                        <h5>ماه:</h5>-->
+<!--                                        <div id="chips1" class="chips mt-1">-->
+<!--                                            مهر-->
+<!--                                            &lt;!&ndash; <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                        <div id="chips2" class="chips mt-1">-->
+<!--                                            آبان-->
+<!--                                            &lt;!&ndash; <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                        <div id="chips3" class="chips mt-1">-->
+<!--                                            آذر-->
+<!--                                            &lt;!&ndash; <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     <div>
-                                        <small style="font-size: 15px!important;" id="emailHelp" class="form-text text-muted">(حداکثر ۲ گزینه را می‌توانید انتخاب کنید.)</small>
+<!--                                        <h5>روز:</h5>-->
+                                        <div id="chips1" class="chips mt-1">
+                                            یک‌شنبه
+                                            <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
+                                        </div>
+                                        <div id="chips2" class="chips mt-1">
+                                            دوشنبه
+                                            <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
+                                        </div>
+                                        <div id="chips3" class="chips mt-1">
+                                            سه‌شنبه
+                                            <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
+                                        </div>
+                                        <div id="chips4" class="chips mt-1">
+                                            چهارشنبه
+                                            <!-- <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span> -->
+                                        </div>
+                                        <div>
+                                            <small style="font-size: 15px!important;" id="emailHelp" class="form-text text-muted">(حداکثر ۲ گزینه را می‌توانید انتخاب کنید.)</small>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -225,10 +245,10 @@
                                     <a href="" style="color: transparent" download="./finalForm.jpg">
                                         <img title="دانلود فایل" width="100px" src="assets/images/finalForm.jpg" alt="register-form">
                                     </a>
-                                    <label for="file-upload" class="custom-file-upload btn">
+                                    <label for="manager-file-upload" class="custom-file-upload btn">
                                         آپلود فایل
                                     </label>
-                                    <input style="visibility: hidden" id="file-upload" type="file"/>
+                                    <input style="visibility: hidden" id="manager-file-upload" type="file" accept=".pdf"/>
                                 </div>
                             </div>
 
@@ -249,6 +269,13 @@
     <!--  Scripts  -->
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+    <!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<!--    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+    <!--<script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>-->
+    <script>
+        // console.log(moment().locale('fa').format('YYYY/M/D'))
+    </script>
 
 </body>
 </html>
