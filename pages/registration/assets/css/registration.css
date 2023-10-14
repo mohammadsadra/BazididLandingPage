@@ -36,7 +36,8 @@ error-tag {
     height: 100%;
     width: 100%;
     margin: 0!important;
-    background-color: #2F455C;
+    /*background-color: #2F455C;*/
+    background-color: #F7F8FF;
 }
 
 /*  Columns  */
@@ -48,28 +49,18 @@ error-tag {
 }
 
 .register-col{
-    border-radius: 0 50px 50px 0;
+    /*border-radius: 0 50px 50px 0;*/
     background-color: #F7F8FF;
     height: 100%;
 }
 
-
-@media only screen
-and (max-width : 515px) {
-    .explanation-col{
-        padding: 20px;
-        width: 100%!important;
-    }
-    .register-col{
-        border-radius: 0 0 0 0;
-        background-color: #F7F8FF;
-        height: 100%;
-    }
-
-    .button-bar{
-        padding-bottom: 35px !important;
-    }
+.explanation-col{
+    background-image: url("../images/3pics.png") !important;
+    background-size: cover;
+    border-radius: 40px 0 0 40px;
 }
+
+
 
 
 .btn{
@@ -241,3 +232,31 @@ and (max-width : 515px) {
     cursor: pointer;
 }
 /*//////////////////////////////////////////////////////*/
+
+@media only screen
+and (max-width : 515px) {
+    .explanation-col{
+        padding: 0;
+        visibility: hidden;
+        display: none;
+        height: 0!important;
+
+    }
+    .register-col{
+        border-radius: 0 0 0 0;
+        background-color: #F7F8FF;
+        height: 100%;
+    }
+    .modal{
+        padding: 0 !important;
+    }
+
+    .modal-content{
+        width: 90%!important;
+        margin: 20px!important;
+    }
+
+    .button-bar{
+        padding-bottom: 35px !important;
+    }
+}

@@ -86,6 +86,8 @@ $(document).ready(function () {
         //     alert("قوانین را مطالعه فرمایید.");
         //     return;
         // }
+        let hasProject = $("#hasProject option:selected").val();
+
         const res1 = validateName("managerName", "فیلد را تکمیل نمایید.");
 
         const res2 = validateName("managerPosition", "فیلد را تکمیل نمایید.");
@@ -94,11 +96,15 @@ $(document).ready(function () {
 
         const res4 = validateName("schoolName", "فیلد را تکمیل نمایید.");
 
-        const res5 = validateName("projectName", "فیلد را تکمیل نمایید.");
+        const res5 = hasProject === "1" ? validateName("projectName", "فیلد را تکمیل نمایید.") : true;
 
-        const res6 = validateName("projectDescription", "فیلد را تکمیل نمایید.");
+        const res6 = hasProject === "1" ? validateName("projectDescription", "فیلد را تکمیل نمایید.") : true;
 
-        if(res1 && res2 && res3 && res4 && res5 && res6){
+        const res7 = validateDropDowns();
+
+
+
+        if(res1 && res2 && res3 && res4 && res5 && res6 && res7){
             uploadFile(1)
             uploadFile(2)
             registerForm()
@@ -207,9 +213,9 @@ function registerForm(){
     let schoolGrade = $("#gradeSelector option:selected").val();
     let studentsGender = $("#genderSelector option:selected").val();
     let schoolType = $("#schoolKind option:selected").val();
-    let isProgrammer = $("#isProgrammer option:selected").val();
+    let isProgrammer = $("#isProgrammer option:selected").val() === "1";
     let programmingLanguage = $("#programmingLanguage option:selected").val();
-    let hasProject = $("#hasProject option:selected").val();
+    let hasProject = $("#hasProject option:selected").val() === "1";
     let projectTitle = $("input[name=projectName]").val();
     let projectExplanation = $("textarea[name=projectDescription]").val();
 
@@ -269,10 +275,6 @@ function registerForm(){
 
 /////////////////////////////////////////////////////////////////////
 
-
-
-
-
 //////////////////////////// VALIDATIONS FUNCTIONS ////////////////////////////
 function validateName(id, error) {
     const errorId = id.toString() + "Error";
@@ -305,12 +307,61 @@ function validatePhoneNumber(id) {
     }
 }
 
+function validateDropDowns(){
+    const hasProject = $("#hasProject option:selected").val() === "-1";
+    const isProgrammer = $("#isProgrammer option:selected").val() === "-1";
+    const genderSelector = $("#genderSelector option:selected").val() === "-1";
+    const gradeSelector = $("#gradeSelector option:selected").val() === "-1";
+    const schoolKind = $("#schoolKind option:selected").val() === "-1";
+    let programmingLanguage;
+    if ($("#programmingLanguage option:selected").val() === "-1"){
+        programmingLanguage = $("#isProgrammer option:selected").val() !== "1";
+    } else {
+        programmingLanguage = true;
+    }
+
+    if (hasProject) {
+        $("#hasProjectError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#hasProjectError").text( "");
+    }
+
+    if (isProgrammer) {
+        $("#isProgrammerError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#isProgrammerError").text( "");
+    }
+
+    if (genderSelector) {
+        $("#genderSelectorError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#genderSelectorError").text( "");
+    }
+
+    if (gradeSelector) {
+        $("#gradeSelectorError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#gradeSelectorError").text( "");
+    }
+
+    if (schoolKind) {
+        $("#schoolKindError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#schoolKindError").text( "");
+    }
+
+    if (!programmingLanguage) {
+        $("#programmingLanguageError").text( "یک گزینه را انتخاب نمایید.");
+    } else {
+        $("#programmingLanguageError").text( "");
+    }
+
+    return !hasProject && !isProgrammer && !genderSelector && !gradeSelector && !schoolKind && programmingLanguage;
+
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 //////////////////////////// BUTTONS FUNCTIONS ////////////////////////////
 function nextSection() {
@@ -404,7 +455,7 @@ function showLoading(){
 
 /////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////// LOADING FUNCTIONS ////////////////////////////
+//////////////////////////// MENU FUNCTIONS ////////////////////////////
 
 function hideProjectMenu(){
     $("#showProjectNameBox").hide();

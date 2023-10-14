@@ -55,19 +55,9 @@
         <div style="width: 100%!important;" class="row main-row">
             <!--Explanation Column-->
             <div class="col-4 explanation-col d-flex flex-column align-items-center justify-content-center">
-<!--                <div class="explanation-text">-->
-<!--                    سلام و خوش آمد خدمت شما دوست عزیز<br>-->
-<!--                    قبل از تکمیل فرم، حتماً از طریق  لینک زیر <br>فایل معرفی <a style="color: #21D0B2" href="assets/documents/bazidid-info.pdf" download="bazidid-info.pdf">“رویداد بازی دید”</a> را با دقت مطالعه فرمایید.-->
-<!--                </div>-->
                 <div class="d-flex justify-content-center align-items-center logo mt-5">
-                    <img src="assets/images/EH-01.png" alt="logo">
+                    <img style="opacity: 0.9" src="assets/images/EH-01.png" alt="logo">
                 </div>
-<!--                <div class="form-check mt-5">-->
-<!--                    <label class="form-check-label" style="color: white;" for="flexCheckDefault">-->
-<!--                        قوانین را مطالعه کردم-->
-<!--                    </label>-->
-<!--                    <input class="form-check-input" type="checkbox" value="" name="rulesCheckbox">-->
-<!--                </div>-->
             </div>
 
             <!--Register Column-->
@@ -116,6 +106,7 @@
                                         <option value="1">دوره متوسطه اول</option>
                                         <option value="2">دوره متوسطه دوم</option>
                                     </select>
+                                    <error-tag id="gradeSelectorError"></error-tag>
                                 </div>
                                 <div class="form-group form-box">
                                     <label class="form-text" for="genderText">جنسیت دانش‌آموزان:</label>
@@ -124,6 +115,7 @@
                                         <option value="0">دختر</option>
                                         <option value="1">پسر</option>
                                     </select>
+                                    <error-tag id="genderSelectorError"></error-tag>
                                 </div>
                                 <div class="form-group form-box">
                                     <label class="form-text" for="schoolKindText">نوع مدرسه را مشخص کنید:</label>
@@ -135,6 +127,7 @@
                                         <option value="4">نمونه دولتی</option>
                                         <option value="5">سایر</option>
                                     </select>
+                                    <error-tag id="schoolKindError"></error-tag>
                                 </div>
                             </div>
                             <!--              Programming Information              -->
@@ -150,6 +143,7 @@
                                         <option value="1">بله</option>
                                         <option value="2">خیر</option>
                                     </select>
+                                    <error-tag id="isProgrammerError"></error-tag>
                                 </div>
                                 <div id="showProgrammingLanguageBox" class="form-group form-box">
                                     <label class="form-text" for="programmingLanguageText">دانش‌آموزان با کدام زبان برنامه‌نویسی آشنا هستند:</label>
@@ -162,6 +156,7 @@
                                         <option value="5">Go</option>
                                         <option value="6">سایر</option>
                                     </select>
+                                    <error-tag id="programmingLanguageError"></error-tag>
                                 </div>
                             </div>
                             <!--              Project Information              -->
@@ -177,6 +172,7 @@
                                         <option value="1">بله</option>
                                         <option value="2">خیر</option>
                                     </select>
+                                    <error-tag id="hasProjectError"></error-tag>
                                 </div>
                                 <div id="showProjectNameBox" class="form-group form-box">
                                     <label class="form-text" for="projectNameText">عنوان پروژه:</label>
