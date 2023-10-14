@@ -9,6 +9,7 @@ const chipsArray = Array(false, false, false, false);
 $(document).ready(function () {
     hideLoading();
     openModal();
+    checkShowingItems()
 
     // BUTTONS ASSIGN
     for (let i = 1; i <= statesNumber; i++) {
@@ -73,6 +74,9 @@ $(document).ready(function () {
     $("textarea[name=projectDescription]").on("blur",function(){
         validateName("projectDescription", "فیلد را تکمیل نمایید.");
     });
+    $("#isProgrammer").on("change",checkShowingItems);
+    $("#hasProject").on("change", checkShowingItems);
+
 
 
     // VALIDATE ON SUBMIT
@@ -200,12 +204,12 @@ function registerForm(){
     let managerPosition = $("input[name=managerPosition]").val();
     let phoneNumber = $("input[name=managerPhoneNumber]").val();
     let schoolName = $("input[name=schoolName]").val();
-    let schoolGrade = $("input[name=gradeSelector]").val();
-    let studentsGender = $("input[name=genderSelector]").val();
-    let schoolType = $("input[name=schoolKind]").val();
-    let isProgrammer = $("input[name=isProgrammer]").val();
-    let programmingLanguage = $("input[name=programmingLanguage]").val();
-    let hasProject = $("input[name=hasProject]").val();
+    let schoolGrade = $("#gradeSelector option:selected").val();
+    let studentsGender = $("#genderSelector option:selected").val();
+    let schoolType = $("#schoolKind option:selected").val();
+    let isProgrammer = $("#isProgrammer option:selected").val();
+    let programmingLanguage = $("#programmingLanguage option:selected").val();
+    let hasProject = $("#hasProject option:selected").val();
     let projectTitle = $("input[name=projectName]").val();
     let projectExplanation = $("textarea[name=projectDescription]").val();
 
@@ -395,6 +399,44 @@ function hideLoading(){
 function showLoading(){
     $("#loading").show()
     $("#loading-background").show()
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////// LOADING FUNCTIONS ////////////////////////////
+
+function hideProjectMenu(){
+    $("#showProjectNameBox").hide();
+    $("#showProjectDescriptionBox").hide();
+}
+
+function showProjectMenu(){
+    $("#showProjectNameBox").show();
+    $("#showProjectDescriptionBox").show();
+}
+function hideProgrammingMenu(){
+    $("#showProgrammingLanguageBox").hide();
+}
+
+function showProgrammingMenu(){
+    $("#showProgrammingLanguageBox").show();
+}
+
+function checkShowingItems() {
+    let hasProject = $("#hasProject option:selected").val();
+    let isProgrammer = $("#isProgrammer option:selected").val();
+
+    if (hasProject === "1"){
+       showProjectMenu();
+    } else {
+        hideProjectMenu();
+    }
+    if (isProgrammer === "1"){
+        showProgrammingMenu();
+    } else {
+        hideProgrammingMenu();
+    }
 
 }
 

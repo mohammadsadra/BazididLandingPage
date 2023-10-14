@@ -55,10 +55,10 @@
         <div style="width: 100%!important;" class="row main-row">
             <!--Explanation Column-->
             <div class="col-4 explanation-col d-flex flex-column align-items-center justify-content-center">
-                <div class="explanation-text">
-                    سلام و خوش آمد خدمت شما دوست عزیز<br>
-                    قبل از تکمیل فرم، حتماً از طریق  لینک زیر <br>فایل معرفی <a style="color: #21D0B2" href="assets/documents/bazidid-info.pdf" download="bazidid-info.pdf">“رویداد بازی دید”</a> را با دقت مطالعه فرمایید.
-                </div>
+<!--                <div class="explanation-text">-->
+<!--                    سلام و خوش آمد خدمت شما دوست عزیز<br>-->
+<!--                    قبل از تکمیل فرم، حتماً از طریق  لینک زیر <br>فایل معرفی <a style="color: #21D0B2" href="assets/documents/bazidid-info.pdf" download="bazidid-info.pdf">“رویداد بازی دید”</a> را با دقت مطالعه فرمایید.-->
+<!--                </div>-->
                 <div class="d-flex justify-content-center align-items-center logo mt-5">
                     <img src="assets/images/EH-01.png" alt="logo">
                 </div>
@@ -112,7 +112,7 @@
                                 <div class="form-group form-box">
                                     <label class="form-text" for="gradeSelectorText">مقطع تحصیلی:</label>
                                     <select class="form-control" id="gradeSelector">
-                                        <option class="disabled-option" disabled selected value> مقطع تحصیلی را انتخاب نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> مقطع تحصیلی را انتخاب نمایید. </option>
                                         <option value="1">دوره متوسطه اول</option>
                                         <option value="2">دوره متوسطه دوم</option>
                                     </select>
@@ -120,7 +120,7 @@
                                 <div class="form-group form-box">
                                     <label class="form-text" for="genderText">جنسیت دانش‌آموزان:</label>
                                     <select class="form-control" id="genderSelector">
-                                        <option class="disabled-option" disabled selected value> جنسیت دانش‌آموزان را انتخاب نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> جنسیت دانش‌آموزان را انتخاب نمایید. </option>
                                         <option value="0">دختر</option>
                                         <option value="1">پسر</option>
                                     </select>
@@ -128,7 +128,7 @@
                                 <div class="form-group form-box">
                                     <label class="form-text" for="schoolKindText">نوع مدرسه را مشخص کنید:</label>
                                     <select class="form-control" id="schoolKind">
-                                        <option class="disabled-option" disabled selected value> نوع مدرسه را انتخاب نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> نوع مدرسه را انتخاب نمایید. </option>
                                         <option value="1">غیر انتفاعی</option>
                                         <option value="2">دولتی</option>
                                         <option value="3">سمپاد</option>
@@ -146,15 +146,15 @@
                                 <div class="form-group form-box">
                                     <label class="form-text" for="isProgrammerText">آیا دانش‌آموزان با برنامه‌نویسی آشنا هستند:</label>
                                     <select class="form-control" id="isProgrammer">
-                                        <option class="disabled-option" disabled selected value> وضعیت برنامه‌نویسی دانش‌آموزان را مشخص نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> وضعیت برنامه‌نویسی دانش‌آموزان را مشخص نمایید. </option>
                                         <option value="1">بله</option>
                                         <option value="2">خیر</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-box">
+                                <div id="showProgrammingLanguageBox" class="form-group form-box">
                                     <label class="form-text" for="programmingLanguageText">دانش‌آموزان با کدام زبان برنامه‌نویسی آشنا هستند:</label>
                                     <select class="form-control" id="programmingLanguage">
-                                        <option class="disabled-option" disabled selected value> زبان برنامه‌نویسی را انتخاب نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> زبان برنامه‌نویسی را انتخاب نمایید. </option>
                                         <option value="1">C</option>
                                         <option value="2">C++</option>
                                         <option value="3">C#</option>
@@ -173,17 +173,17 @@
                                 <div class="form-group form-box">
                                     <label class="form-text" for="hasProjectText">آیا دانش‌آموزان پروژه‌ای برای ارائه در قسمت "ارائه دانش‌آموزی" دارند؟</label>
                                     <select class="form-control" id="hasProject">
-                                        <option class="disabled-option" disabled selected value> وضعیت پروژه دانش‌آموزی را مشخص نمایید. </option>
+                                        <option class="disabled-option" disabled selected value="-1"> وضعیت پروژه دانش‌آموزی را مشخص نمایید. </option>
                                         <option value="1">بله</option>
                                         <option value="2">خیر</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-box">
+                                <div id="showProjectNameBox" class="form-group form-box">
                                     <label class="form-text" for="projectNameText">عنوان پروژه:</label>
                                     <input type="text" class="form-control" name="projectName" placeholder="عنوان پروژه را وارد کنید.">
                                     <error-tag id="projectNameError"></error-tag>
                                 </div>
-                                <div class="form-group form-box">
+                                <div id="showProjectDescriptionBox" class="form-group form-box">
                                     <label class="form-text" for="projectDescriptionText">لطفا توضیح مختصری در مورد پروژه بدهید:</label>
                                     <textarea class="form-control" name="projectDescription" rows="3" placeholder="توضیحات"></textarea>
                                     <error-tag id="projectDescriptionError"></error-tag>
@@ -274,17 +274,34 @@
 
                                 <div class="form-group mt-3">
                                     <div class="mb-4">
-                                        <span class="form-text" for="projectNameText">لطفاً نامه درخواست خود در رویداد بازی دید را در سربرگ مرکز تنظیم نمایید و در اینجا بارگذاری کنید.</span>
+                                        <span class="form-text">لطفاً نامه درخواست خود در رویداد بازی دید را در سربرگ مرکز تنظیم نمایید و در اینجا بارگذاری کنید.</span>
+                                        <br>
                                         <span id="emailHelp" class="form-text text-muted">(پس از مشاهده قالب پیشنهادی، نامه خود را تنظیم نمایید.)</span>
                                     </div>
-                                    <a href="" style="color: transparent" download="./finalForm.jpg">
-                                        <img title="دانلود فایل" width="100px" src="assets/images/finalForm.jpg" alt="register-form">
-                                    </a>
-                                    <label for="manager-file-upload" class="custom-file-upload btn">
-                                        آپلود فایل
-                                    </label>
-                                    <input style="visibility: hidden" id="manager-file-upload" type="file" accept=".pdf"/>
+                                    <div class="d-flex flex-column ">
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="level-style">
+                                                گام ۱:
+                                            </div>
+                                            <a href="assets/documents/نامه درخواست رویداد.docx" download="نامه درخواست رویداد.docx" class="custom-file-download btn">
+                                                دانلود فایل نمونه
+                                            </a>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="level-style">
+                                                گام ۲:
+                                            </div>
+
+                                            <label for="manager-file-upload" class="custom-file-upload btn">
+                                                 آپلود فایل PDF
+                                            </label>
+                                            <input style="visibility: hidden" id="manager-file-upload" type="file" accept=".pdf"/>
+                                        </div>
+                                    </div>
+
                                 </div>
+
+
                             </div>
 
                             <!--              Buttons              -->
