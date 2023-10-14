@@ -50,11 +50,11 @@ $(document).ready(function () {
 
     // VALIDATION ON FILING INPUTS
     $("input[name=managerName]").on("blur",function(){
-        validateName("managerName", "فیلد را پر نمایید.");
+        validateName("managerName", "فیلد را تکمیل نمایید.");
     });
 
     $("input[name=managerPosition]").on("blur",function(){
-        validateName("managerPosition", "فیلد را پر نمایید.");
+        validateName("managerPosition", "فیلد را تکمیل نمایید.");
     });
 
     $("input[name=managerPhoneNumber]").on("blur",function(){
@@ -62,15 +62,15 @@ $(document).ready(function () {
     });
 
     $("input[name=schoolName]").on("blur",function(){
-        validateName("schoolName", "فیلد را پر نمایید.");
+        validateName("schoolName", "فیلد را تکمیل نمایید.");
     });
 
     $("input[name=projectName]").on("blur",function(){
-        validateName("projectName", "فیلد را پر نمایید.");
+        validateName("projectName", "فیلد را تکمیل نمایید.");
     });
 
     $("textarea[name=projectDescription]").on("blur",function(){
-        validateName("projectDescription", "فیلد را پر نمایید.");
+        validateName("projectDescription", "فیلد را تکمیل نمایید.");
     });
 
 
@@ -81,17 +81,17 @@ $(document).ready(function () {
             alert("قوانین را مطالعه فرمایید.");
             return;
         }
-        const res1 = validateName("managerName", "فیلد را پر نمایید.");
+        const res1 = validateName("managerName", "فیلد را تکمیل نمایید.");
 
-        const res2 = validateName("managerPosition", "فیلد را پر نمایید.");
+        const res2 = validateName("managerPosition", "فیلد را تکمیل نمایید.");
 
         const res3 = validatePhoneNumber("managerPhoneNumber");
 
-        const res4 = validateName("schoolName", "فیلد را پر نمایید.");
+        const res4 = validateName("schoolName", "فیلد را تکمیل نمایید.");
 
-        const res5 = validateName("projectName", "فیلد را پر نمایید.");
+        const res5 = validateName("projectName", "فیلد را تکمیل نمایید.");
 
-        const res6 = validateName("projectDescription", "فیلد را پر نمایید.");
+        const res6 = validateName("projectDescription", "فیلد را تکمیل نمایید.");
 
         if(res1 && res2 && res3 && res4 && res5 && res6){
             uploadFile(1)
@@ -193,7 +193,7 @@ function uploadFile(fileKind){
         console.log("UPLOADING FILE ALWAYS!");
     });
 }
-function registerForm() {
+function registerForm(){
     showLoading()
     let managerName = $("input[name=managerName]").val();
     let managerPosition = $("input[name=managerPosition]").val();
@@ -287,7 +287,7 @@ function validatePhoneNumber(id) {
     let phone = document.forms["registerForm"][id].value;
     const validationRegex = "(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}";
     if (phone === "") {
-        $("#" + errorId).text( "فیلد را پر نمایید.");
+        $("#" + errorId).text( "فیلد را تکمیل نمایید.");
         return false;
     } else {
         if(!phone.toString().match(validationRegex)){
