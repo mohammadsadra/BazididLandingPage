@@ -77,11 +77,11 @@ $(document).ready(function () {
 
     // VALIDATE ON SUBMIT
     $("#submit").on("click", function (){
-        const res0 = $("input[name=rulesCheckbox]").val();
-        if (res0 === ""){
-            alert("قوانین را مطالعه فرمایید.");
-            return;
-        }
+        // const res0 = $("input[name=rulesCheckbox]").val();
+        // if (res0 === ""){
+        //     alert("قوانین را مطالعه فرمایید.");
+        //     return;
+        // }
         const res1 = validateName("managerName", "فیلد را تکمیل نمایید.");
 
         const res2 = validateName("managerPosition", "فیلد را تکمیل نمایید.");
@@ -421,9 +421,9 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
 }
