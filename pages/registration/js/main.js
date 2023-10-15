@@ -1,7 +1,6 @@
 
 // BUTTON VARIABLES
 let currentSection = 1;
-let selectedChips = 0;
 const statesNumber = 6;
 const chipsArray = Array(false, false, false, false);
 
@@ -123,53 +122,15 @@ const header = {
     "Content-Type": "application/json"
 };
 
-var studentFileId = 0;
-var managerFormFileId = 0;
+let studentFileId = 0;
+let managerFormFileId = 0;
 
 const dataType ='json';
-
-function getNames() {
-    $.get("https://api.rainviewer.com/public/weather-maps.json", function(data, status){
-        alert("Data: " + data["host"] + "\nStatus: " + status);
-    });
-}
-
-function createManager() {
-    console.log($("input[name=managerName]").val())
-    console.log($("input[name=managerPosition]").val())
-    console.log($("input[name=managerPhoneNumber]").val())
-    console.log(chipsArray)
-
-    const name = $("input[name=managerName]").val();
-    const position = $("input[name=managerPosition]").val()
-    const phone =  $("input[name=managerPhoneNumber]").val()
-
-    // $.ajax({
-    //     url: mainURL + "manager/create",
-    //     type: 'post',
-    //     data: JSON.stringify({
-    //         name: name,
-    //         phone: phone,
-    //         isVerify: true,
-    //         position: position
-    //     }),
-    //     headers: header,
-    //     dataType: dataType,
-    //     success: function (data) {
-    //         console.info(data);
-    //     }
-    // }).done(function (response) {
-    //     console.log(response);
-    // }).fail(function (res){
-    //     console.log(res)
-    // });
-
-}
 
 function uploadFile(fileKind){
 
     let formData = new FormData();
-    var file;
+    let file;
 
     if(fileKind === 1){
         formData.append("FilePathType", "3");
@@ -218,8 +179,6 @@ function registerForm(){
     let hasProject = $("#hasProject option:selected").val() === "1";
     let projectTitle = $("input[name=projectName]").val();
     let projectExplanation = $("textarea[name=projectDescription]").val();
-
-    let uploadedForm = $("input[name=managerPhoneNumber]").val();
 
     $.ajax({
         url: mainURL + "registrationForm/createFullForm",
@@ -431,11 +390,6 @@ function selectChips(id){
 
 
 }
-function checkSelectedChips(){
-    for (let i = 0; i < chipsArray.length; i++){
-        $("#chips" + chipsArray[i].toString()).addClass("selected-chips")
-    }
-}
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -496,13 +450,13 @@ function checkShowingItems() {
 //////////////////////////// MODAL FUNCTIONS ////////////////////////////
 
 // Get the modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+let btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
 function openModal() {
