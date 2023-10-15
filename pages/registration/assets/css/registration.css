@@ -82,6 +82,7 @@ error-tag {
 
 .custom-file-upload{
     padding: 2px 5px 2px 5px;
+    min-width: 140px;
     background-color: #21D0B2!important;
     color: white!important;
 }
