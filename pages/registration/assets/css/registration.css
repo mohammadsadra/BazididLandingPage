@@ -104,6 +104,8 @@ error-tag {
     background-color: #f1f1f1;
     margin-inline-end: 5px;
     cursor: pointer;
+    min-width: 70px!important;
+    text-align: center;
   }
 
   .chips img {
@@ -260,4 +262,15 @@ and (max-width : 515px) {
     .button-bar{
         padding-bottom: 35px !important;
     }
+}
+/**/
+
+.hide{
+    visibility: hidden;
+    height: 0!important;
+}
+.holiday{
+    background-color: #ff4646 !important;
+    color: white!important;
+    cursor: default;
 }

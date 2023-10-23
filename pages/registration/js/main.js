@@ -1,14 +1,36 @@
-
 // BUTTON VARIABLES
-let currentSection = 1;
-const statesNumber = 6;
+let currentSection = 6;
+const statesNumber = 7;
 const chipsArray = Array(false, false, false, false);
 
+// MONTH SELECTOR VARIABLE
+let today = moment().locale('fa').format('YYYY/M/D');
+let todayArray = today.split("/");
+let monthLength= {1:31, 2:31, 3:31, 4:31, 5:31, 6:31, 7:30, 8:30, 9:30, 10:30, 11:30, 12:29}
+let firstMonth = {}
+let secondMonth = {}
+let holidays;
+
+let selectedMonth = 1
+
+String.prototype.toIndiaDigits= function(){
+    var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+    return this.replace(/[0-9]/g, function(w){
+        return id[+w]
+    });
+}
 
 $(document).ready(function () {
     hideLoading();
     openModal();
-    checkShowingItems()
+    checkShowingItems();
+    monthFillNames();
+
+    readjson().then(r => {
+        console.log(holidays["8"]);
+        dayFillNumbers(todayArray[1], firstMonth);
+    });
+
 
     // BUTTONS ASSIGN
     for (let i = 1; i <= statesNumber; i++) {
@@ -112,6 +134,14 @@ $(document).ready(function () {
         }
     });
 
+    //
+    $("#month" + selectedMonth).addClass("selected-chips")
+    $("#month1").on("click", function (){
+        selectMonth("1")
+    })
+    $("#month2").on("click", function (){
+        selectMonth("2")
+    })
 });
 
 //////////////////////////// API SECTION ////////////////////////////
@@ -475,3 +505,59 @@ window.onclick = function(event) {
     }
 }
 /////////////////////////////////////////////////////////////////////////////
+//////////////////////////// MODAL FUNCTIONS ////////////////////////////
+function monthFillNames(){
+    $("#month1").text(moment().locale('fa').month(parseInt(todayArray[1]) - 1).format('MMMM'));
+    $("#month2").text(moment().locale('fa').month(parseInt(todayArray[1])).format('MMMM'));
+}
+
+function dayFillNumbers(month, monthDictionary){
+    for (let i = 1; i < 36; i++){
+        $("#day" + i.toString()).addClass('hide');
+        $("#day" + i.toString()).removeClass('holiday');
+    }
+    const firstDayCompleteFormat = todayArray[0]+ '/' + month + '/1';
+    const firstDayOfMonth = moment(firstDayCompleteFormat, 'jYYYY/jMM/jDD').locale('fa').format('e');
+    let tempDay = firstDayOfMonth;
+    let dayOfTable = parseInt(firstDayOfMonth) + 1;
+    for (let i = 0; i < monthLength[month]; i++){
+        monthDictionary[i + 1] = tempDay;
+        if ( dayOfTable !== 0 && dayOfTable !== 5 && dayOfTable !== 6 ){
+            console.log()
+            if (holidays[month.toString()][todayArray[0] + '/' + month.toString() +'/' + (i+1).toString()]){
+                $("#day" + dayOfTable.toString()).addClass('holiday');
+            }
+        }
+        $("#day" + dayOfTable.toString()).removeClass('hide');
+        $("#day" + dayOfTable.toString()).text((i + 1).toString().toIndiaDigits());
+        $("#day" + dayOfTable.toString()).attr({
+            "number" : i + 1
+        });
+
+        if (tempDay.toString() === "6"){
+            tempDay = 0;
+        } else{
+            tempDay++;
+        }
+        dayOfTable++;
+    }
+}
+
+function selectMonth(monthNumber){
+    $("#month" + selectedMonth).removeClass("selected-chips");
+    selectedMonth = monthNumber;
+
+    $("#month" + selectedMonth).addClass("selected-chips");
+    dayFillNumbers(selectedMonth === "1" ? todayArray[1] :parseInt(todayArray[1])+1 , selectedMonth === "1" ? firstMonth : secondMonth);
+}
+/////////////////////////////////////////////////////////////////////////
+async function readjson() {
+     await fetch("./json/holidays.json")
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            holidays = data;
+            // console.log(holidays)
+        });
+}
