@@ -515,6 +515,7 @@ function dayFillNumbers(month, monthDictionary){
     for (let i = 1; i < 36; i++){
         $("#day" + i.toString()).addClass('hide');
         $("#day" + i.toString()).removeClass('holiday');
+        $("#day" + i.toString()).removeAttr("title");
     }
     const firstDayCompleteFormat = todayArray[0]+ '/' + month + '/1';
     const firstDayOfMonth = moment(firstDayCompleteFormat, 'jYYYY/jMM/jDD').locale('fa').format('e');
@@ -526,6 +527,9 @@ function dayFillNumbers(month, monthDictionary){
             console.log()
             if (holidays[month.toString()][todayArray[0] + '/' + month.toString() +'/' + (i+1).toString()]){
                 $("#day" + dayOfTable.toString()).addClass('holiday');
+                $("#day" + dayOfTable.toString()).attr({
+                    "title" : "تعطیل"
+                });
             }
         }
         $("#day" + dayOfTable.toString()).removeClass('hide');
