@@ -216,6 +216,18 @@ error-tag {
     justify-content: center;
     align-items: center;
 }
+.alert-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px 30px 20px 30px;
+    width: 300px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: none;
+}
 
 /* The Close Button */
 .close {
@@ -259,6 +271,11 @@ and (max-width : 515px) {
         margin: 20px!important;
     }
 
+    .alert-modal-content{
+        width: 90%!important;
+        margin: 20px!important;
+    }
+
     .button-bar{
         padding-bottom: 35px !important;
     }
@@ -274,3 +291,5 @@ and (max-width : 515px) {
     color: white!important;
     cursor: default;
 }
+/*  ///////////////////////////////////////////////////////////// */
+
