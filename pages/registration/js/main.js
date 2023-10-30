@@ -1,5 +1,5 @@
 // BUTTON VARIABLES
-let currentSection = 6;
+let currentSection = 1;
 const statesNumber = 7;
 const chipsArray = Array(false, false, false, false);
 
@@ -204,6 +204,30 @@ function registerForm(){
     let projectTitle = $("input[name=projectName]").val();
     let projectExplanation = $("textarea[name=projectDescription]").val();
 
+    let month;
+
+    if (selectedMonth === 1 || selectedMonth === "1"){
+        month = parseInt(todayArray[1]);
+    } else {
+        month = parseInt(todayArray[1]) + 1;
+    }
+
+    const englishCalendarDay1 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[0]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+    const temp = englishCalendarDay1.toString().split('/')
+    let  day1 = new Date(Number(temp[0]), Number(temp[1]) - 1, Number(temp[2]));
+
+
+    let day2;
+    if(selectedDays.length === 2){
+        const englishCalendarDay2 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[0]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+        const temp = englishCalendarDay2.toString().split('/')
+        day2 = new Date(Number(temp[0]), Number(temp[1]) - 1, Number(temp[2]));
+    } else {
+        day2 = null;
+    }
+
+
+
     $.ajax({
         url: mainURL + "registrationForm/createFullForm",
         type: 'post',
@@ -224,14 +248,9 @@ function registerForm(){
                     isProgrammer: isProgrammer,
                     programmingLanguage: isProgrammer ? programmingLanguage : -1,
                 },
-                eventDaysCreationDto: {
-                    saturday: false,
-                    sunday: chipsArray[0],
-                    monday: chipsArray[1],
-                    tuesday: chipsArray[2],
-                    wednesday: chipsArray[3],
-                    thursday: false,
-                    friday: false
+                reservationSelectedDays: {
+                    FirstDay: day1.toISOString(),
+                    SecondDay: day2 === null ? null : day2.toISOString()
                 },
                 managerFormId: managerFormFileId,
                 studentListFileId: studentFileId,
@@ -248,6 +267,7 @@ function registerForm(){
         }
     }).done(function (response) {
         console.log(response);
+
     }).fail(function (res){
         console.log(res)
     }).always(
@@ -369,7 +389,6 @@ function backSection(){
     }
     checkVisibility();
 }
-
 function checkVisibility(){
     if(currentSection === 1){
         $(".back-btn").hide();
@@ -384,32 +403,6 @@ function checkVisibility(){
     if(currentSection === statesNumber){
         $(".next-btn").hide();
         $("#submit").show();
-    }
-}
-
-function selectChips(id){
-    let selected = 0;
-    for (let i = 0; i < chipsArray.length; i++){
-        if(chipsArray[i]){
-            selected++
-        }
-    }
-    for (let i = 0; i < chipsArray.length; i++){
-
-        if(id === i + 1){
-            if(selected < 2 ){
-                chipsArray[i] =!chipsArray[i]
-            } else {
-                if(chipsArray[i] === true){
-                    chipsArray[i] =!chipsArray[i]
-                }
-            }
-            if(chipsArray[i]){
-                $("#chips" + id).addClass("selected-chips")
-            } else {
-                $("#chips" + id).removeClass("selected-chips")
-            }
-        }
     }
 }
 
@@ -534,7 +527,7 @@ function dayFillNumbers(month, monthDictionary){
         $("#day" + dayOfTable.toString()).removeClass('hide');
         $("#day" + dayOfTable.toString()).text((i + 1).toString().toIndiaDigits());
         $("#day" + dayOfTable.toString()).attr({
-            "number" : i + 1
+            "number" : (i + 1).toString()
         });
 
         if (tempDay.toString() === "6"){
@@ -551,14 +544,13 @@ function selectMonth(monthNumber){
     selectedMonth = monthNumber;
 
     $("#month" + selectedMonth).addClass("selected-chips");
-    dayFillNumbers(selectedMonth === "1" ? todayArray[1] :parseInt(todayArray[1])+1 , selectedMonth === "1" ? firstMonth : secondMonth);
+    dayFillNumbers(selectedMonth === "1" ? parseInt(todayArray[1]) :parseInt(todayArray[1])+1 , selectedMonth === "1" ? firstMonth : secondMonth);
 }
 
 
 
 
 function selectDay(i){
-    console.log("click")
     if (include(selectedDays, i)) {
         const index = selectedDays.indexOf(i);
         if (index > -1) {
