@@ -124,7 +124,6 @@ $(document).ready(function () {
             registerForm()
         } else {
             $("#alert").show();
-            // alert("مقادیر را بدرستی وارد نمایید.");
         }
     });
 
@@ -263,6 +262,7 @@ function registerForm(){
         headers: header,
         dataType: dataType,
         success: function (data) {
+            window.location.href = "http://localhost:63344/Bazidid/pages/registration/succeedRegistration.html";
             console.info(data);
         }
     }).done(function (response) {
@@ -502,6 +502,7 @@ function dayFillNumbers(month, monthDictionary){
     for (let i = 1; i < 36; i++){
         $("#day" + i.toString()).addClass('hide');
         $("#day" + i.toString()).removeClass('holiday');
+        $("#day" + i.toString()).removeClass('last-days');
         $("#day" + i.toString()).removeAttr("title");
         $("#day" + i.toString()).prop("onclick", null).off("click");
         $("#day" + i.toString()).on("click",function (){
@@ -516,12 +517,12 @@ function dayFillNumbers(month, monthDictionary){
     for (let i = 0; i < monthLength[month]; i++){
         monthDictionary[i + 1] = tempDay;
         if ( dayOfTable !== 0 && dayOfTable !== 5 && dayOfTable !== 6 ){
-            console.log()
             if (holidays[month.toString()][todayArray[0] + '/' + month.toString() +'/' + (i+1).toString()]){
                 $("#day" + dayOfTable.toString()).addClass('holiday');
                 $("#day" + dayOfTable.toString()).attr({
                     "title" : "تعطیل"
                 });
+                $("#day" + dayOfTable.toString()).prop("onclick", null).off("click");
             }
         }
         $("#day" + dayOfTable.toString()).removeClass('hide');
@@ -529,6 +530,10 @@ function dayFillNumbers(month, monthDictionary){
         $("#day" + dayOfTable.toString()).attr({
             "number" : (i + 1).toString()
         });
+        if(i < (parseInt( todayArray[2]) + 7) && selectedMonth.toString() === "1") {
+            $("#day" + dayOfTable.toString()).addClass('last-days');
+            $("#day" + dayOfTable.toString()).prop("onclick", null).off("click");
+        }
 
         if (tempDay.toString() === "6"){
             tempDay = 0;

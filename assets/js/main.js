@@ -262,13 +262,23 @@
   new PureCounter();
 
 })()
+const images = ["assets/img/all-students.jpeg",
+  "assets/img/box.jpeg",
+  "assets/img/portfolio-20.jpeg"
+];
+$(document).ready(function () {
+  // var hero = document.getElementById('hero');
 
-/**
- * Slideshow
- */
-
-let currentNumber = 0;
-let addressLists = []
-function slideshow(){
-  
-}
+  var index = 1;
+  function nextBackground() {
+    // hero.style.transition = 'background-image 2s ease-in-out';
+    $("#hero").css('background-image', 'url(' + images[index] + ')');
+    $("#hero").css('background-size', 'cover');
+    index++;
+    if(index === images.length) {
+      index = 0;
+    }
+    $("#hero").css('opacity', 100);
+  }
+  setInterval(nextBackground, 5000);
+});

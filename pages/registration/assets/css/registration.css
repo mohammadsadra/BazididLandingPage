@@ -210,7 +210,7 @@ error-tag {
     margin: auto;
     padding: 20px 30px 20px 30px;
     border: 1px solid #888;
-    width: 50% !important;
+    width: 40% !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -290,5 +290,12 @@ and (max-width : 515px) {
     background-color: #ff4646 !important;
     color: white!important;
     cursor: default;
+    pointer-events: none;
+}
+.last-days{
+    background-color: #8c8c8c !important;
+    color: white!important;
+    cursor: default;
+    pointer-events: none;
 }
 /*  ///////////////////////////////////////////////////////////// */

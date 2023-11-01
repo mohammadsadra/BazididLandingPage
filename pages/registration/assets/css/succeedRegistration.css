@@ -20,7 +20,7 @@ body, html {
 }
 
 .center-box {
-    width: 40%;
+    width: 43%;
     padding: 20px;
     background-color: rgb(27, 43, 59);
     opacity: 0.9;
@@ -42,7 +42,7 @@ body, html {
 h1 {
     margin: 0;
     padding: 10px 0;
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 
@@ -50,7 +50,7 @@ p {
     color: white;
     margin: 0;
     padding: 10px 0;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .logo {
@@ -58,7 +58,7 @@ p {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 150px; /* You can adjust this according to your logo's size */
+    width: 100px; /* You can adjust this according to your logo's size */
     height: auto;
 }
 
