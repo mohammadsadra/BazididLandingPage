@@ -1,7 +1,6 @@
 // BUTTON VARIABLES
 let currentSection = 1;
-const statesNumber = 7;
-const chipsArray = Array(false, false, false, false);
+const statesNumber = 6;
 
 // MONTH SELECTOR VARIABLE
 let today = moment().locale('fa').format('YYYY/M/D');
@@ -81,15 +80,17 @@ $(document).ready(function () {
         validateName("schoolName", "فیلد را تکمیل نمایید.");
     });
 
-    $("input[name=projectName]").on("blur",function(){
-        validateName("projectName", "فیلد را تکمیل نمایید.");
-    });
-
-    $("textarea[name=projectDescription]").on("blur",function(){
-        validateName("projectDescription", "فیلد را تکمیل نمایید.");
-    });
     $("#isProgrammer").on("change",checkShowingItems);
-    $("#hasProject").on("change", checkShowingItems);
+
+    // $("input[name=projectName]").on("blur",function(){
+    //     validateName("projectName", "فیلد را تکمیل نمایید.");
+    // });
+
+    // $("textarea[name=projectDescription]").on("blur",function(){
+    //     validateName("projectDescription", "فیلد را تکمیل نمایید.");
+    // });
+
+    // $("#hasProject").on("change", checkShowingItems);
 
 
 
@@ -100,7 +101,7 @@ $(document).ready(function () {
         //     alert("قوانین را مطالعه فرمایید.");
         //     return;
         // }
-        let hasProject = $("#hasProject option:selected").val();
+        // let hasProject = $("#hasProject option:selected").val();
 
         const res1 = validateName("managerName", "فیلد را تکمیل نمایید.");
 
@@ -110,15 +111,17 @@ $(document).ready(function () {
 
         const res4 = validateName("schoolName", "فیلد را تکمیل نمایید.");
 
-        const res5 = hasProject === "1" ? validateName("projectName", "فیلد را تکمیل نمایید.") : true;
+        // const res5 = hasProject === "1" ? validateName("projectName", "فیلد را تکمیل نمایید.") : true;
 
-        const res6 = hasProject === "1" ? validateName("projectDescription", "فیلد را تکمیل نمایید.") : true;
+        // const res6 = hasProject === "1" ? validateName("projectDescription", "فیلد را تکمیل نمایید.") : true;
 
         const res7 = validateDropDowns();
 
+        const res8 = selectedDays.length >= 1 || selectedDays.length <= 2;
 
 
-        if(res1 && res2 && res3 && res4 && res5 && res6 && res7){
+
+        if(res1 && res2 && res3 && res4 && res7 && res8){
             uploadFile(1)
             uploadFile(2)
             registerForm()
@@ -199,9 +202,10 @@ function registerForm(){
     let schoolType = $("#schoolKind option:selected").val();
     let isProgrammer = $("#isProgrammer option:selected").val() === "1";
     let programmingLanguage = $("#programmingLanguage option:selected").val();
-    let hasProject = $("#hasProject option:selected").val() === "1";
-    let projectTitle = $("input[name=projectName]").val();
-    let projectExplanation = $("textarea[name=projectDescription]").val();
+    let hasProject = false;
+    // let hasProject = $("#hasProject option:selected").val() === "1";
+    // let projectTitle = $("input[name=projectName]").val();
+    // let projectExplanation = $("textarea[name=projectDescription]").val();
 
     let month;
 
@@ -254,10 +258,11 @@ function registerForm(){
                 managerFormId: managerFormFileId,
                 studentListFileId: studentFileId,
                 hasProject: hasProject,
-                projectCreationDto: hasProject ? {
-                    projectName: projectTitle,
-                    description: projectExplanation
-                } : {}
+                projectCreationDto: {}
+            // projectCreationDto: hasProject ? {
+            //         projectName: projectTitle,
+            //         description: projectExplanation
+            //     } : {}
         }),
         headers: header,
         dataType: dataType,
@@ -311,7 +316,7 @@ function validatePhoneNumber(id) {
 }
 
 function validateDropDowns(){
-    const hasProject = $("#hasProject option:selected").val() === "-1";
+    // const hasProject = $("#hasProject option:selected").val() === "-1";
     const isProgrammer = $("#isProgrammer option:selected").val() === "-1";
     const genderSelector = $("#genderSelector option:selected").val() === "-1";
     const gradeSelector = $("#gradeSelector option:selected").val() === "-1";
@@ -323,11 +328,11 @@ function validateDropDowns(){
         programmingLanguage = true;
     }
 
-    if (hasProject) {
-        $("#hasProjectError").text( "یک گزینه را انتخاب نمایید.");
-    } else {
-        $("#hasProjectError").text( "");
-    }
+    // if (hasProject) {
+    //     $("#hasProjectError").text( "یک گزینه را انتخاب نمایید.");
+    // } else {
+    //     $("#hasProjectError").text( "");
+    // }
 
     if (isProgrammer) {
         $("#isProgrammerError").text( "یک گزینه را انتخاب نمایید.");
@@ -359,7 +364,8 @@ function validateDropDowns(){
         $("#programmingLanguageError").text( "");
     }
 
-    return !hasProject && !isProgrammer && !genderSelector && !gradeSelector && !schoolKind && programmingLanguage;
+    return !isProgrammer && !genderSelector && !gradeSelector && !schoolKind && programmingLanguage;
+    // return !hasProject && !isProgrammer && !genderSelector && !gradeSelector && !schoolKind && programmingLanguage;
 
 }
 
@@ -426,15 +432,15 @@ function showLoading(){
 
 //////////////////////////// MENU FUNCTIONS ////////////////////////////
 
-function hideProjectMenu(){
-    $("#showProjectNameBox").hide();
-    $("#showProjectDescriptionBox").hide();
-}
-
-function showProjectMenu(){
-    $("#showProjectNameBox").show();
-    $("#showProjectDescriptionBox").show();
-}
+// function hideProjectMenu(){
+//     $("#showProjectNameBox").hide();
+//     $("#showProjectDescriptionBox").hide();
+// }
+//
+// function showProjectMenu(){
+//     $("#showProjectNameBox").show();
+//     $("#showProjectDescriptionBox").show();
+// }
 function hideProgrammingMenu(){
     $("#showProgrammingLanguageBox").hide();
 }
@@ -444,14 +450,14 @@ function showProgrammingMenu(){
 }
 
 function checkShowingItems() {
-    let hasProject = $("#hasProject option:selected").val();
+    // let hasProject = $("#hasProject option:selected").val();
     let isProgrammer = $("#isProgrammer option:selected").val();
 
-    if (hasProject === "1"){
-       showProjectMenu();
-    } else {
-        hideProjectMenu();
-    }
+    // if (hasProject === "1"){
+    //    showProjectMenu();
+    // } else {
+    //     hideProjectMenu();
+    // }
     if (isProgrammer === "1"){
         showProgrammingMenu();
     } else {
