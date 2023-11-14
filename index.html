@@ -299,12 +299,12 @@
             <script>
               var wrapper = document.getElementById("schoolNames");
               var myHTML = '';
-              const schoolTitle = ["مجموعه مدارس علامه حلی", "مجموعه مدارس فرزانگان", "مدرسه شهید باهنر", "مدرسه شهید سلطانی"];
-              const description = ["(۲ و ۳ و ۸ و ۱۰)", "(۱ و ۵ و ۶)",  "(شماره ۴ - کرج)", "(شماره ۵ - کرج)"];
-              const src = ["assets/img/schools/heli.jpeg","assets/img/schools/farzenegan.jpeg","assets/img/schools/bahonar4.jpeg","assets/img/schools/soltani5.jpg"]
+              const schoolTitle = ["مجموعه مدارس علامه حلی", "مجموعه مدارس فرزانگان", "مدرسه شهید باهنر", "مدرسه شهید سلطانی", "مدرسه شهدای آزادی", "استعدادهای درخشان"];
+              const description = ["(۲ و ۳ و ۸ و ۱۰)", "(۱ و ۵ و ۶)",  "(شماره ۴ - کرج)", "(شماره ۵ - کرج)" , "(تهران)", "(شماره ۴)"];
+              const src = ["heli.jpeg","farzenegan.jpeg","bahonar4.jpeg","soltani5.jpg", "shohadayeazadi.jpg", "estedadderakhshan4.jpeg"]
               for (var i = 0; i < schoolTitle.length; i++) {
                 myHTML += '<div class="swiper-slide">' + '<div class="testimonial-item">\n' +
-                        '<img class="school-class" src='+ src[i] + '>'+
+                        '<img class="school-class" src=assets/img/schools/'+ src[i] + '>'+
                         '                <h3>' +schoolTitle[i] + '</h3>\n' +
                         '                <h4>' + description[i] + '</h4>\n' +
                         '              </div>' + '</div>';
