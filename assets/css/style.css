@@ -1443,3 +1443,19 @@ section {
     max-width: 100%;
   }
 }
+
+.school-class{
+  max-width: 600px;
+}
+
+@media screen and (max-width: 700px) {
+  .school-class {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .school-class {
+    max-width: 280px;
+  }
+}

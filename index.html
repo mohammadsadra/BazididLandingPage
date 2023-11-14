@@ -300,9 +300,11 @@
               var wrapper = document.getElementById("schoolNames");
               var myHTML = '';
               const schoolTitle = ["مجموعه مدارس علامه حلی", "مجموعه مدارس فرزانگان", "مدرسه شهید باهنر", "مدرسه شهید سلطانی"];
-              const description = ["(۲ و ۳ و ۸ و ۱۰)", "(۱ و ۵ و ۶)",  "(شماره ۴ - کرج)", "(شماره ۴ - کرج)"];
+              const description = ["(۲ و ۳ و ۸ و ۱۰)", "(۱ و ۵ و ۶)",  "(شماره ۴ - کرج)", "(شماره ۵ - کرج)"];
+              const src = ["assets/img/schools/heli.jpeg","assets/img/schools/farzenegan.jpeg","assets/img/schools/bahonar4.jpeg","assets/img/schools/soltani5.jpg"]
               for (var i = 0; i < schoolTitle.length; i++) {
                 myHTML += '<div class="swiper-slide">' + '<div class="testimonial-item">\n' +
+                        '<img class="school-class" src='+ src[i] + '>'+
                         '                <h3>' +schoolTitle[i] + '</h3>\n' +
                         '                <h4>' + description[i] + '</h4>\n' +
                         '              </div>' + '</div>';
