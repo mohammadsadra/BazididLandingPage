@@ -22,7 +22,8 @@ body, html {
 .center-box {
     width: 43%;
     padding: 20px;
-    background-color: rgb(27, 43, 59);
+    background-color: rgba(250, 167, 52, 0.6);
+    /*background-color: rgb(27, 43, 59);*/
     opacity: 0.9;
     border-radius: 20px;
     text-align: center;

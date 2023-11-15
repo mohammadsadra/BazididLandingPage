@@ -1070,7 +1070,7 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
-  width: 30%;
+  width: 80%;
   background: #fff;
 }
 
@@ -1097,16 +1097,11 @@ section {
 }
 
 .contact .info p {
-  padding: 0 0 0 60px;
   margin-bottom: 0;
   font-size: 14px;
   color: #728394;
 }
 
-.contact .info .email,
-.contact .info .phone {
-  margin-top: 40px;
-}
 
 .contact .info .email:hover i,
 .contact .info .address:hover i,
