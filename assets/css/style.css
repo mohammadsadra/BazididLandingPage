@@ -1070,7 +1070,7 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
-  width: 80%;
+  max-width: 80%;
   background: #fff;
 }
 
