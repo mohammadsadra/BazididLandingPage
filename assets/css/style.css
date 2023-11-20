@@ -1317,7 +1317,7 @@ section {
 }
 
 @media (max-width: 992px) {
-  .mobile{
+  .desktop{
     display: none!important;
   }
 
@@ -1419,7 +1419,7 @@ section {
 }
 
 @media screen and (min-width: 993px) {
-  .desktop{
+  .mobile{
     display: none;
   }
 }
