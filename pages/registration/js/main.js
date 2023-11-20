@@ -139,7 +139,7 @@ $(document).ready(function () {
 });
 
 //////////////////////////// API SECTION ////////////////////////////
-const mainURL = "https://localhost:7010/";
+const mainURL = "https://bazididapi.hamrah.academy/";
 const header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
