@@ -1508,3 +1508,6 @@ section {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+.mobile-image{
+  border-radius: 8px;
+}
