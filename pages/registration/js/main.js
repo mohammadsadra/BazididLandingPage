@@ -119,8 +119,6 @@ $(document).ready(function () {
 
         const res8 = selectedDays.length >= 1 || selectedDays.length <= 2;
 
-
-
         if(res1 && res2 && res3 && res4 && res7 && res8){
             uploadFile(1)
             uploadFile(2)
@@ -195,7 +193,7 @@ function registerForm(){
     showLoading()
     let managerName = $("input[name=managerName]").val();
     let managerPosition = $("input[name=managerPosition]").val();
-    let phoneNumber = $("input[name=managerPhoneNumber]").val();
+    let phoneNumber = toEnDigit($("input[name=managerPhoneNumber]").val());
     let schoolName = $("input[name=schoolName]").val();
     let schoolGrade = $("#gradeSelector option:selected").val();
     let studentsGender = $("#genderSelector option:selected").val();
@@ -299,12 +297,13 @@ function validateName(id, error) {
 
 function validatePhoneNumber(id) {
     const errorId = id.toString() + "Error";
-    let phone = document.forms["registerForm"][id].value;
+    let phone = toEnDigit(document.forms["registerForm"][id].value);
     const validationRegex = "(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}";
     if (phone === "") {
         $("#" + errorId).text( "فیلد را تکمیل نمایید.");
         return false;
     } else {
+        console.log(phone)
         if(!phone.toString().match(validationRegex)){
             $("#" + errorId).text("لطفا شماره را بدرستی وارد نمایید.");
             return false;
@@ -314,7 +313,11 @@ function validatePhoneNumber(id) {
         }
     }
 }
-
+function toEnDigit(s) {
+    return s.replace(/[\u0660-\u0669\u06f0-\u06f9]/g,    // Detect all Persian/Arabic Digit in range of their Unicode with a global RegEx character set
+        function(a) { return a.charCodeAt(0) & 0xf }     // Remove the Unicode base(2) range that not match
+    )
+}
 function validateDropDowns(){
     // const hasProject = $("#hasProject option:selected").val() === "-1";
     const isProgrammer = $("#isProgrammer option:selected").val() === "-1";
