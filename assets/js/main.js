@@ -273,18 +273,15 @@ var mobileImages = ["assets/img/1.jpg",
 ];
 
 $(document).ready(function () {
-  // var hero = document.getElementById('hero');
 
   var index = 1;
   function nextBackground() {
     let windowWidth = $(window).width();
     console.log(windowWidth);
 
-    // Choose the correct list based on the window width
     let images = windowWidth <= 990 ? mobileImages : desktopImages;
     console.log(images);
 
-    // hero.style.transition = 'background-image 2s ease-in-out';
     $("#hero").css('background-image', 'url(' + images[index] + ')');
     $("#hero").css('background-size', 'cover');
     index++;

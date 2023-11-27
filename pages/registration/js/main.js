@@ -151,6 +151,12 @@ let managerFormFileId = 0;
 
 const dataType ='json';
 
+document.getElementById('manager-file-upload').onchange = function () {
+    $("#uploadedPDF").text(this.files[0].name);
+};
+document.getElementById('excel-file-upload').onchange = function () {
+    $("#uploadedExcel").text(this.files[0].name);
+};
 function uploadFile(fileKind){
 
     let formData = new FormData();

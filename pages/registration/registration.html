@@ -205,7 +205,7 @@
                             <!--              Students Information              -->
                             <div class="section-4">
                                 <div class="d-flex flex-row align-items-center mb-3">
-                                    <img width="140px" src="assets/images/students.png">
+                                    <img width="120px" src="assets/images/students.png">
                                     <h1 style="margin-top:20px;margin-right: 20px">اطلاعات دانش‌آموزان</h1>
                                 </div>
                                 <div class="form-group mb-5">
@@ -229,7 +229,10 @@
                                             <label for="excel-file-upload" class="custom-file-upload btn">
                                                 آپلود فایل اکسل
                                             </label>
-                                            <input style="visibility: hidden" id="excel-file-upload" type="file" accept=".xlsx"/>
+                                            <input style="visibility: hidden; display: none" id="excel-file-upload" type="file" accept=".xlsx"/>
+                                        </div>
+                                        <div id="uploadedExcel" class="uploaded-file-style">
+                                            هنوز فایلی آپلود نکردید.
                                         </div>
                                     </div>
                                 </div>
@@ -358,7 +361,11 @@
                                             <label for="manager-file-upload" class="custom-file-upload btn">
                                                  آپلود فایل PDF
                                             </label>
-                                            <input style="visibility: hidden" id="manager-file-upload" type="file" accept=".pdf"/>
+                                            <input style="visibility: hidden; display: none;" id="manager-file-upload" type="file" accept=".pdf"/>
+                                        </div>
+
+                                        <div id="uploadedPDF" class="uploaded-file-style">
+                                            هنوز فایلی آپلود نکردید.
                                         </div>
                                     </div>
 

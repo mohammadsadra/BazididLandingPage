@@ -185,6 +185,11 @@ error-tag {
     font-weight: bold;
     font-size: 20px;
 }
+.uploaded-file-style{
+    margin-left: 20px;
+    font-size: 18px;
+    color: grey;
+}
 /*////////////////////////////////////////////////////*/
 
 /*           Modal           */
