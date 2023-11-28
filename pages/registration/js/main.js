@@ -226,7 +226,7 @@ function registerForm(){
 
     let day2;
     if(selectedDays.length === 2){
-        const englishCalendarDay2 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[0]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+        const englishCalendarDay2 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[1]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
         const temp = englishCalendarDay2.toString().split('/')
         day2 = new Date(Number(temp[0]), Number(temp[1]) - 1, Number(temp[2]));
     } else {
