@@ -267,9 +267,9 @@ var desktopImages = ["assets/img/box.jpeg",
     "assets/img/all-students.jpeg",
   "assets/img/portfolio-20.jpeg"
 ];
-var mobileImages = ["assets/img/1.jpg",
-  "assets/img/2.jpg",
-  "assets/img/3.jpg"
+var mobileImages = ["assets/img/1.jpeg",
+  "assets/img/2.jpeg",
+  "assets/img/3.jpeg"
 ];
 
 $(document).ready(function () {
