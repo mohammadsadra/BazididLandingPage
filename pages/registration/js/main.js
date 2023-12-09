@@ -26,6 +26,10 @@ $(document).ready(function () {
         $("#alert").hide();
     });
 
+    setInterval(function (){
+        console.log( $("#genderSelector option:selected").val());
+    }, 1000);
+
     hideLoading();
     openModal();
     checkShowingItems();
@@ -67,6 +71,8 @@ $(document).ready(function () {
     $("input[name=managerName]").on("blur",function(){
         validateName("managerName", "فیلد را تکمیل نمایید.");
     });
+
+
 
     $("input[name=managerPosition]").on("blur",function(){
         validateName("managerPosition", "فیلد را تکمیل نمایید.");
@@ -136,10 +142,13 @@ $(document).ready(function () {
     $("#month2").on("click", function (){
         selectMonth("2")
     })
+
+
 });
 
 //////////////////////////// API SECTION ////////////////////////////
 const mainURL = "https://bazididapi.hamrah.academy/";
+// const mainURL = "https://localhost:7010/";
 const header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
@@ -181,18 +190,29 @@ function uploadFile(fileKind){
         processData: false,
         success: function (data) {
             console.info(data);
+            if(fileKind === 1){
+                localStorage.setItem("studentFileId", data);
+                studentFileId = data;
+                console.log(data)
+            } else if (fileKind === 2){
+                localStorage.setItem("managerFormFileId", data);
+                managerFormFileId = data;
+                console.log(data)
+            }
         }
     }).done(function (response) {
         if(fileKind === 1){
+            localStorage.setItem("studentFileId", response);
             studentFileId = response;
+            console.log(response)
         } else if (fileKind === 2){
+            localStorage.setItem("managerFormFileId", response);
             managerFormFileId = response;
+            console.log(response)
         }
         console.log(response);
     }).fail(function (res){
         console.log(res)
-    }).always(function (){
-        console.log("UPLOADING FILE ALWAYS!");
     });
 }
 function registerForm(){
@@ -233,8 +253,9 @@ function registerForm(){
         day2 = null;
     }
 
-
-
+    const managerFile = Number(localStorage.getItem("managerFormFileId"))
+    const studentListFile = Number(localStorage.getItem("studentFileId"))
+    console.log(localStorage.getItem("managerFormFileId"))
     $.ajax({
         url: mainURL + "registrationForm/createFullForm",
         type: 'post',
@@ -259,8 +280,8 @@ function registerForm(){
                     FirstDay: day1.toISOString(),
                     SecondDay: day2 === null ? null : day2.toISOString()
                 },
-                managerFormId: managerFormFileId,
-                studentListFileId: studentFileId,
+                managerFormFileId: managerFile,
+                studentListFileId: studentListFile,
                 hasProject: hasProject,
                 projectCreationDto: {}
             // projectCreationDto: hasProject ? {
@@ -271,16 +292,17 @@ function registerForm(){
         headers: header,
         dataType: dataType,
         success: function (data) {
-            window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
+            window.location.href = "https://bazididapi.hamrah.academy/pages/registration/succeedRegistration.html";
             console.info(data);
         }
     }).done(function (response) {
         console.log(response);
 
     }).fail(function (res){
-        console.log(res)
+        console.log(res);
+        // localStorage.clear();
     }).always(
-            () => hideLoading()
+        () => hideLoading()
     );
 
 }
