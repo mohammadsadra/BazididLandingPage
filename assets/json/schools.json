@@ -1,0 +1,138 @@
+{
+
+  "1": {
+    "imgSrc": "farzenegan1.jpeg",
+    "Name": "مدرسه فرزانگان",
+    "Description": "(شماره ۱ - منطقه ۶)"
+  },
+  "2": {
+    "imgSrc": "farzenegan6.jpeg",
+    "Name": "مدرسه فرزانگان",
+    "Description": "(شماره ۵ - منطقه ۲)"
+  },
+  "3": {
+    "imgSrc": "farzenegan5.jpeg",
+    "Name": "مدرسه فرزانگان",
+    "Description": "(شماره ۶ - منطقه ۶)"
+  },
+  "4": {
+    "imgSrc": "heli2.jpeg",
+    "Name": "مدرسه علامه حلی",
+    "Description": "(شماره ۲ - منطقه ۷)"
+  },
+  "5": {
+    "imgSrc": "heli3.jpeg",
+    "Name": "مدرسه علامه حلی",
+    "Description": "(شماره۳ - منطقه ۳)"
+  },
+  "6": {
+    "imgSrc": "heli8.jpeg",
+    "Name": "مدرسه علامه حلی",
+    "Description": "(شماره ۸ - منطقه ۳)"
+  },
+  "7": {
+    "imgSrc": "heli10.jpeg",
+    "Name": "مدرسه علامه حلی",
+    "Description": "(شماره ۱۰ - منطقه ۴)"
+  },
+  "8": {
+    "imgSrc": "bahonar4.jpeg",
+    "Name": "مدرسه شهید باهنر",
+    "Description": "(شماره ۲ - کرج)"
+  },
+  "9": {
+    "imgSrc": "bahonar4-alborz.jpeg",
+    "Name": "مدرسه شهید باهنر",
+    "Description": "(شماره ۴ - کرج)"
+  },
+  "10": {
+    "imgSrc": "estedadderakhshan4.jpeg",
+    "Name": "مدرسه شهید سلطانی",
+    "Description": "(شماره ۴ - کرج)"
+  },
+  "11": {
+    "imgSrc": "soltani5.jpeg",
+    "Name":  "مدرسه شهید سلطانی",
+    "Description": "(شماره ۵ - کرج)"
+  },
+  "12": {
+    "imgSrc":"shohadayeazadi.jpeg",
+    "Name": "مدرسه شهدای آزادی",
+    "Description": "(منطقه ۱۲)"
+  },
+  "13": {
+    "imgSrc":"modiriat-olampiad.jpeg",
+    "Name": "المپیاد مدیریت",
+    "Description": " تهران "
+  },
+  "14": {
+    "imgSrc":"imam-javad-school.jpeg",
+    "Name": "مدرسه امام جواد ع",
+    "Description": "(منطقه ۱)"
+  },
+  "15": {
+    "imgSrc":"sobhe-royesh.jpeg",
+    "Name": "صبح رویش",
+    "Description": "(منطقه ۱۵)"
+  },
+  "16": {
+    "imgSrc":"savad-resane-olampiyad.jpeg",
+    "Name": "المپیاد سواد رسانه ای",
+    "Description": " تهران "
+  },
+  "17": {
+    "imgSrc":"farzanegan-3-karaj.jpeg",
+    "Name": "فرزانگان ۳ کرج",
+    "Description": "(شماره ۳ - کرج )"
+  },
+  "18": {
+    "imgSrc":"soltani-3-karaj.jpeg",
+    "Name": "سلطانی ۳ کرج",
+    "Description": "(شماره ۳ - کرج )"
+  },
+  "19": {
+    "imgSrc":"bahonar-4-karaj.jpeg",
+    "Name": "باهنر ۴ کرج",
+    "Description": "(شماره ۴ - کرج )"
+  },
+  "20": {
+    "imgSrc":"hazrate-ghaem.jpeg",
+    "Name": " حضرت قائم",
+    "Description": "(منطقه ۱۲)"
+  },
+  "21": {
+    "imgSrc":"bahonar-3-karaj.jpeg",
+    "Name": "باهنر ۳ کرج",
+    "Description": "(شماره ۳ - کرج )"
+  },
+  "22": {
+    "imgSrc":"farzanegan-5-karaj.jpeg",
+    "Name": "فرزانگان ۵ کرج",
+    "Description": "(شماره ۵ - کرج )"
+  },
+  "23": {
+    "imgSrc":"farzanegan-1-2.jpeg",
+    "Name": "فرزانگان ۱ دوره دوم",
+    "Description": "(شماره ۱ - کرج )"
+  },
+  "24": {
+    "imgSrc":"azadi-melat.jpeg",
+    "Name": "آزادی ملت",
+    "Description": "(منطقه ۱۲)"
+  },
+  "25": {
+    "imgSrc":"moalem.jpeg",
+    "Name": "معلم",
+    "Description": "(منطقه ۱۲)"
+  },
+  "26": {
+    "imgSrc":"shahid-hatami.jpeg",
+    "Name": "شهید حاتمی",
+    "Description": "(منطقه ۱۲)"
+  },
+  "27": {
+    "imgSrc":"festival-danesh-amozi.jpeg",
+    "Name": "فستیوال دانش آموزی",
+    "Description": " تهران "
+  }
+}

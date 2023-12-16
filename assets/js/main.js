@@ -272,15 +272,46 @@ var mobileImages = ["assets/img/1.jpeg",
   "assets/img/3.jpeg"
 ];
 
+
+let schoolListImage;
+let result = [];
+
+
 $(document).ready(function () {
+
+  fetch("./assets/json/schools.json")
+      .then((res) => {
+        return res.json();
+      }).then((data) => {
+    schoolListImage = data;
+    console.log(schoolListImage)
+
+    for(var i in schoolListImage)
+      result.push([i, schoolListImage [i]]);
+    console.log(result.length);
+
+    let wrapper = document.getElementById("schoolNames");
+    let myHTML = '';
+
+    for (var i = 1; i <= result.length; i++) {
+      console.log(schoolListImage[i.toString()])
+      myHTML += '<div class="swiper-slide">' + '<div class="testimonial-item">\n' +
+          '<img class="school-class" src=assets/img/schools/'+ schoolListImage[i.toString()].imgSrc + '>'+
+          '                <h3>' +schoolListImage[i.toString()].Name + '</h3>\n' +
+          '                <h4>' + schoolListImage[i.toString()].Description + '</h4>\n' +
+          '              </div>' + '</div>';
+    }
+
+    wrapper.innerHTML = myHTML
+  });
+
+
+
 
   var index = 1;
   function nextBackground() {
     let windowWidth = $(window).width();
-    console.log(windowWidth);
-
     let images = windowWidth <= 990 ? mobileImages : desktopImages;
-    console.log(images);
 
     $("#hero").css('background-image', 'url(' + images[index] + ')');
     $("#hero").css('background-size', 'cover');

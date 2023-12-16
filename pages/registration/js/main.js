@@ -36,7 +36,6 @@ $(document).ready(function () {
     monthFillNames();
 
     readjson().then(r => {
-        console.log(holidays["8"]);
         dayFillNumbers(todayArray[1], firstMonth);
     });
 
