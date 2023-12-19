@@ -295,7 +295,7 @@ function registerForm(){
         headers: header,
         dataType: dataType,
         success: function (data) {
-            window.location.href = "https://bazididapi.hamrah.academy/pages/registration/succeedRegistration.html";
+            window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
             console.info(data);
         }
     }).done(function (response) {
