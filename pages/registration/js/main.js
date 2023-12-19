@@ -116,6 +116,7 @@ $(document).ready(function () {
 
         const res4 = validateName("schoolName", "فیلد را تکمیل نمایید.");
 
+
         // const res5 = hasProject === "1" ? validateName("projectName", "فیلد را تکمیل نمایید.") : true;
 
         // const res6 = hasProject === "1" ? validateName("projectDescription", "فیلد را تکمیل نمایید.") : true;
@@ -124,7 +125,10 @@ $(document).ready(function () {
 
         const res8 = selectedDays.length >= 1 || selectedDays.length <= 2;
 
-        if(res1 && res2 && res3 && res4 && res7 && res8){
+        const res9 = $('#excel-file-upload').val();
+        const res10 = $('#manager-file-upload').val();
+
+        if(res1 && res2 && res3 && res4 && res7 && res8 && res9 && res10){
             uploadFile(1)
             uploadFile(2)
             registerForm()
