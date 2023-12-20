@@ -153,8 +153,8 @@ $(document).ready(function () {
 });
 
 //////////////////////////// API SECTION ////////////////////////////
-// const mainURL = "https://bazididapi.hamrah.academy/";
-const mainURL = "https://localhost:7010/";
+const mainURL = "https://bazididapi.hamrah.academy/";
+// const mainURL = "https://localhost:7010/";
 const header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
@@ -389,6 +389,7 @@ function registerFormWithFile(){
         }
     }).done(function (response) {
         console.log(response);
+        window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
 
     }).fail(function (res){
         console.log(res);
