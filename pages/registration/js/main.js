@@ -26,6 +26,8 @@ $(document).ready(function () {
         $("#alert").hide();
     });
 
+    localStorage.clear();
+
     setInterval(function (){
         console.log( $("#genderSelector option:selected").val());
     }, 1000);
@@ -129,9 +131,10 @@ $(document).ready(function () {
         const res10 = $('#manager-file-upload').val();
 
         if(res1 && res2 && res3 && res4 && res7 && res8 && res9 && res10){
-            uploadFile(1)
-            uploadFile(2)
-            registerForm()
+            registerFormWithFile()
+            // uploadFile(1)
+            // uploadFile(2)
+            // registerForm()
         } else {
             $("#alert").show();
         }
@@ -150,8 +153,8 @@ $(document).ready(function () {
 });
 
 //////////////////////////// API SECTION ////////////////////////////
-const mainURL = "https://bazididapi.hamrah.academy/";
-// const mainURL = "https://localhost:7010/";
+// const mainURL = "https://bazididapi.hamrah.academy/";
+const mainURL = "https://localhost:7010/";
 const header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
@@ -169,56 +172,148 @@ document.getElementById('manager-file-upload').onchange = function () {
 document.getElementById('excel-file-upload').onchange = function () {
     $("#uploadedExcel").text(this.files[0].name);
 };
-function uploadFile(fileKind){
+// function uploadFile(fileKind){
+//
+//     let formData = new FormData();
+//     let file;
+//
+//     if(fileKind === 1){
+//         formData.append("FilePathType", "3");
+//         file = $("#excel-file-upload").prop('files')[0];
+//     } else if (fileKind === 2){
+//         formData.append("FilePathType", "1");
+//         file = $("#manager-file-upload").prop('files')[0];
+//     }
+//
+//     formData.append("FileKind", fileKind);
+//     formData.append("FileDetails", file);
+//
+//     $.ajax({
+//         url: mainURL + "files/PostSingleFile",
+//         type: 'post',
+//         data: formData,
+//         contentType: false, // Not to set any content header
+//         processData: false,
+//         success: function (data) {
+//             // console.info(data);
+//             if(fileKind === 1){
+//                 localStorage.setItem("studentFileId", data);
+//                 studentFileId = data;
+//                 // console.log(data)
+//             } else if (fileKind === 2){
+//                 localStorage.setItem("managerFormFileId", data);
+//                 managerFormFileId = data;
+//                 // console.log(data)
+//             }
+//         }
+//     }).done(function (response) {
+//         if(fileKind === 1){
+//             localStorage.setItem("studentFileId", response);
+//             studentFileId = response;
+//             // console.log(response)
+//         } else if (fileKind === 2){
+//             localStorage.setItem("managerFormFileId", response);
+//             managerFormFileId = response;
+//             // console.log(response)
+//         }
+//         console.log(response);
+//     }).fail(function (res){
+//         console.log(res)
+//     });
+// }
+// function registerForm(){
+//     showLoading()
+//     let managerName = $("input[name=managerName]").val();
+//     let managerPosition = $("input[name=managerPosition]").val();
+//     let phoneNumber = toEnDigit($("input[name=managerPhoneNumber]").val());
+//     let schoolName = $("input[name=schoolName]").val();
+//     let schoolGrade = $("#gradeSelector option:selected").val();
+//     let studentsGender = $("#genderSelector option:selected").val();
+//     let schoolType = $("#schoolKind option:selected").val();
+//     let isProgrammer = $("#isProgrammer option:selected").val() === "1";
+//     let programmingLanguage = $("#programmingLanguage option:selected").val();
+//     let hasProject = false;
+//     // let hasProject = $("#hasProject option:selected").val() === "1";
+//     // let projectTitle = $("input[name=projectName]").val();
+//     // let projectExplanation = $("textarea[name=projectDescription]").val();
+//
+//     let month;
+//
+//     if (selectedMonth === 1 || selectedMonth === "1"){
+//         month = parseInt(todayArray[1]);
+//     } else {
+//         month = parseInt(todayArray[1]) + 1;
+//     }
+//
+//     const englishCalendarDay1 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[0]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+//     const temp = englishCalendarDay1.toString().split('/')
+//     let  day1 = new Date(Number(temp[0]), Number(temp[1]) - 1, Number(temp[2]));
+//
+//
+//     let day2;
+//     if(selectedDays.length === 2){
+//         const englishCalendarDay2 =  moment.from(todayArray[0].toString() + '/' + month + '/' + $("#day" + selectedDays[1]).attr("number"), 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+//         const temp = englishCalendarDay2.toString().split('/')
+//         day2 = new Date(Number(temp[0]), Number(temp[1]) - 1, Number(temp[2]));
+//     } else {
+//         day2 = null;
+//     }
+//
+//     const managerFile = Number(localStorage.getItem("managerFormFileId"))
+//     const studentListFile = Number(localStorage.getItem("studentFileId"))
+//     console.log(localStorage.getItem("managerFormFileId"))
+//     console.log(localStorage.getItem("studentFileId"))
+//     $.ajax({
+//         url: mainURL + "registrationForm/createFullForm",
+//         type: 'post',
+//         data: JSON.stringify({
+//                 managerCreationDto: {
+//                     name: managerName,
+//                     phone: phoneNumber,
+//                     isVerify: true,
+//                     position: managerPosition
+//                 },
+//                 schoolCreationDto: {
+//                     name: schoolName,
+//                     schoolType: schoolType,
+//                     gender: studentsGender
+//                 },
+//                 schoolClassCreationDto: {
+//                     grade: schoolGrade,
+//                     isProgrammer: isProgrammer,
+//                     programmingLanguage: isProgrammer ? programmingLanguage : -1,
+//                 },
+//                 reservationSelectedDays: {
+//                     FirstDay: day1.toISOString(),
+//                     SecondDay: day2 === null ? null : day2.toISOString()
+//                 },
+//                 managerFormFileId: managerFile,
+//                 studentListFileId: studentListFile,
+//                 hasProject: hasProject,
+//                 projectCreationDto: {}
+//             // projectCreationDto: hasProject ? {
+//             //         projectName: projectTitle,
+//             //         description: projectExplanation
+//             //     } : {}
+//         }),
+//         headers: header,
+//         dataType: dataType,
+//         success: function (data) {
+//             // window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
+//             console.info(data);
+//         }
+//     }).done(function (response) {
+//         console.log(response);
+//
+//     }).fail(function (res){
+//         console.log(res);
+//     }).always(
+//         () => hideLoading()
+//     );
+//
+// }
 
-    let formData = new FormData();
-    let file;
-
-    if(fileKind === 1){
-        formData.append("FilePathType", "3");
-        file = $("#excel-file-upload").prop('files')[0];
-    } else if (fileKind === 2){
-        formData.append("FilePathType", "1");
-        file = $("#manager-file-upload").prop('files')[0];
-    }
-
-    formData.append("FileKind", fileKind);
-    formData.append("FileDetails", file);
-
-    $.ajax({
-        url: mainURL + "files/PostSingleFile",
-        type: 'post',
-        data: formData,
-        contentType: false, // Not to set any content header
-        processData: false,
-        success: function (data) {
-            console.info(data);
-            if(fileKind === 1){
-                localStorage.setItem("studentFileId", data);
-                studentFileId = data;
-                console.log(data)
-            } else if (fileKind === 2){
-                localStorage.setItem("managerFormFileId", data);
-                managerFormFileId = data;
-                console.log(data)
-            }
-        }
-    }).done(function (response) {
-        if(fileKind === 1){
-            localStorage.setItem("studentFileId", response);
-            studentFileId = response;
-            console.log(response)
-        } else if (fileKind === 2){
-            localStorage.setItem("managerFormFileId", response);
-            managerFormFileId = response;
-            console.log(response)
-        }
-        console.log(response);
-    }).fail(function (res){
-        console.log(res)
-    });
-}
-function registerForm(){
+function registerFormWithFile(){
     showLoading()
     let managerName = $("input[name=managerName]").val();
     let managerPosition = $("input[name=managerPosition]").val();
@@ -259,43 +354,37 @@ function registerForm(){
     const managerFile = Number(localStorage.getItem("managerFormFileId"))
     const studentListFile = Number(localStorage.getItem("studentFileId"))
     console.log(localStorage.getItem("managerFormFileId"))
+    console.log(localStorage.getItem("studentFileId"))
+    let formData = new FormData();
+
+    formData.append("managerCreationDto.Name", managerName);
+    formData.append("managerCreationDto.Phone", phoneNumber);
+    formData.append("managerCreationDto.IsVerify", true.toString());
+    formData.append("managerCreationDto.Position", managerPosition);
+    formData.append("schoolCreationDto.Name", schoolName);
+    formData.append("schoolCreationDto.SchoolType", schoolType);
+    formData.append("schoolCreationDto.Gender", studentsGender);
+    formData.append("schoolClassCreationDto.Grade", schoolGrade);
+    formData.append("schoolClassCreationDto.IsProgrammer", isProgrammer.toString());
+    formData.append("schoolClassCreationDto.ProgrammingLanguage", isProgrammer ? programmingLanguage : -1);
+    formData.append("reservationSelectedDays.FirstDay", day1.toISOString());
+    formData.append("reservationSelectedDays.SecondDay", day2 === null ? null : day2.toISOString());
+    formData.append("hasProject", false.toString());
+    formData.append("StudentFile.FileDetails", $("#excel-file-upload").prop('files')[0]);
+    formData.append("StudentFile.FilePathType", "3");
+    formData.append("StudentFile.FileKind", "1");
+    formData.append("ManagerFile.FileDetails",  $("#manager-file-upload").prop('files')[0]);
+    formData.append("ManagerFile.FilePathType", "1");
+    formData.append("ManagerFile.FileKind", "2");
+
     $.ajax({
-        url: mainURL + "registrationForm/createFullForm",
+        url: mainURL + "registrationForm/createFullFormWithFiles",
         type: 'post',
-        data: JSON.stringify({
-                managerCreationDto: {
-                    name: managerName,
-                    phone: phoneNumber,
-                    isVerify: true,
-                    position: managerPosition
-                },
-                schoolCreationDto: {
-                    name: schoolName,
-                    schoolType: schoolType,
-                    gender: studentsGender
-                },
-                schoolClassCreationDto: {
-                    grade: schoolGrade,
-                    isProgrammer: isProgrammer,
-                    programmingLanguage: isProgrammer ? programmingLanguage : -1,
-                },
-                reservationSelectedDays: {
-                    FirstDay: day1.toISOString(),
-                    SecondDay: day2 === null ? null : day2.toISOString()
-                },
-                managerFormFileId: managerFile,
-                studentListFileId: studentListFile,
-                hasProject: hasProject,
-                projectCreationDto: {}
-            // projectCreationDto: hasProject ? {
-            //         projectName: projectTitle,
-            //         description: projectExplanation
-            //     } : {}
-        }),
-        headers: header,
-        dataType: dataType,
+        data: formData,
+        contentType: false, // Not to set any content header
+        processData: false,
         success: function (data) {
-            window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
+            // window.location.href = "https://bazidid.hamrah.academy/pages/registration/succeedRegistration.html";
             console.info(data);
         }
     }).done(function (response) {
@@ -303,7 +392,6 @@ function registerForm(){
 
     }).fail(function (res){
         console.log(res);
-        // localStorage.clear();
     }).always(
         () => hideLoading()
     );
@@ -590,9 +678,6 @@ function selectMonth(monthNumber){
     $("#month" + selectedMonth).addClass("selected-chips");
     dayFillNumbers(selectedMonth === "1" ? parseInt(todayArray[1]) :parseInt(todayArray[1])+1 , selectedMonth === "1" ? firstMonth : secondMonth);
 }
-
-
-
 
 function selectDay(i){
     if (include(selectedDays, i)) {
